@@ -1,4 +1,4 @@
-interface apb_interfs(input bit PCLK, PRESET);
+interface apb_interfs(input bit PCLK, PRESETn);
 	// Output
 	bit PRDATA;
 	bit PREADY;
@@ -10,6 +10,7 @@ interface apb_interfs(input bit PCLK, PRESET);
 	bit PWRITE;
 	bit [`ADDR_WIDTH-1:0] PADDR;
 	bit [`DATA_WIDTH-1:0] PWDATA;
+	bit [((8*`DATA_WIDTH)+7):(8*`DATA_WIDTH)] PSTRB;
 
 	clocking driver_cb @(posedge PCLK);
 		output PSELx;
@@ -17,6 +18,7 @@ interface apb_interfs(input bit PCLK, PRESET);
 		output PWRITE;
 		output PADDR;
 		output PWDATA;
+		output PSTRB;
 	endclocking : driver_cb
 
 	clocking monitor_cb @(posedge PCLK);
@@ -25,12 +27,13 @@ interface apb_interfs(input bit PCLK, PRESET);
 		input PWRITE;
 		input PADDR;
 		input PWDATA;
+		input PSTRB;
 
 		input PRDATA;
 		input PREADY;
 		input PSLVERR;
 	endclocking : monitor_cb
 
-	modport DRIVER (clocking driver_cb, input PCLK, PRESET);
-	modport MONITOR (clocking monitor_cb, input PCLK, PRESET);
+	modport DRIVER (clocking driver_cb, input PCLK, PRESETn);
+	modport MONITOR (clocking monitor_cb, input PCLK, PRESETn);
 endinterface
