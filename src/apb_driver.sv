@@ -48,7 +48,7 @@ class apb_driver extends uvm_driver #(apb_seq_item);
 			$display("---------------------Driver in ACCESS State @%0t---------------------", $time);
 			// ACCESS State
 			wait(vif.PREADY);
-			vif.PENABLE <= req.PENABLE;
+			vif.PENABLE <= 1;
 			$display("PSELX = %0d", vif.PSELX);
 			$display("PENABLE = %0d", vif.PENABLE);
 			$display("PWRITE= %0d", vif.PWRITE);
