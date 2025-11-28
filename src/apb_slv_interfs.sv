@@ -1,4 +1,5 @@
-interface apb_interfs(input bit PCLK, PRESETn);
+`include "defines.sv"
+interface apb_slv_interfs(input bit PCLK, PRESETn);
 	// Output
 	bit PRDATA;
 	bit PREADY;
@@ -19,6 +20,8 @@ interface apb_interfs(input bit PCLK, PRESETn);
 		output PADDR;
 		output PWDATA;
 		output PSTRB;
+
+		input PREADY;
 	endclocking : driver_cb
 
 	clocking monitor_cb @(posedge PCLK);

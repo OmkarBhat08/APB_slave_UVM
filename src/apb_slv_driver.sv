@@ -1,15 +1,15 @@
-class apb_driver extends uvm_driver #(apb_seq_item);
+class apb_slv_driver extends uvm_driver #(apb_slv_seq_item);
 
-	virtual apb_interfs vif;
-	`uvm_component_utils(apb_driver)
+	virtual apb_slv_interfs vif;
+	`uvm_component_utils(apb_slv_driver)
 	
-	function new(string name = "apb_driver", uvm_component parent = null);
+	function new(string name = "apb_slv_driver", uvm_component parent = null);
 		super.new(name, parent);
 	endfunction : new
 
 	function void build_phase(uvm_phase phase);
 		super.build_phase(phase);
-		if(!uvm_config_db #(virtual apb_interfs)::get(this, "", "vif", vif))
+		if(!uvm_config_db #(virtual apb_slv_interfs)::get(this, "", "vif", vif))
 			`uvm_fatal(get_type_name(), $sformatf("Note set at top"));
 	endfunction : build_phase
 
@@ -56,4 +56,4 @@ class apb_driver extends uvm_driver #(apb_seq_item);
 			$display("PWDATA = %0d", vif.PWDATA);
 			$display("PSTRB = %0d", vif.PSTRB);
 	endtask : drive
-endclass : apb_driver
+endclass : apb_slv_driver
