@@ -31,26 +31,14 @@ class apb_slv_scoreboard extends uvm_component;
 		forever
 		begin
 			$display("-------------------------Scoreboard @ %0t-------------------------", $time);
-			fork
-				begin
-					wait(input_q.size() > 0);
-					write_task();
-				end
-
-				begin
-					wait(output_q.size() > 0);
-					read_task();
-				end
-			join_any			
-		end
-	endtask : run_phase 
-
-	virtual task write_task();
-		bit [31:0] mask;
-		input_packet = input_q.pop_front();
-		if(input_packet.PSELx == 1 && input_packet.PENABLE == 1 && input_packet.PWRITE == 1)
-		begin
-			$display("Scoreboard writing %0h data into memory at address %0h", input_packet.PWDATA, input_packet.PADDR);
+			wait(input_q.size() > 0 && output_q.size() > 0);
+			begin
+				input_packet = input_q.pop_front();
+				output_packet = output_q.pop_front();
+			end
+			if(input_packet.PSELx == 1 && input_packet.PENABLE == 1 && input_packet.PWRITE == 1)
+			begin
+				$display("Scoreboard writing %0h data into memory at address %0h", input_packet.PWDATA, input_packet.PADDR);
 			// Prepare mask as per PSTRB
 			/*
 			if(input_packet.PSTRB[0])
@@ -65,19 +53,19 @@ class apb_slv_scoreboard extends uvm_component;
 			if(input_packet.PSTRB[3])
 				mask[31:24] = 8'hFF;
 */
-			mem[input_packet.PADDR] =	input_packet.PWDATA;
+				mem[input_packet.PADDR] =	input_packet.PWDATA;
+			end
+			if(input_packet.PSELx == 1 && input_packet.PENABLE == 1 && input_packet.PWRITE == 0)
+			begin
+				$display("Field\t Expected\t Actual", output_packet.PRDATA, mem[input_packet.PADDR]);
+				$display("PRDATA\t %0d\t %0d", mem[input_packet.PADDR], output_packet.PRDATA);
+
+				if(output_packet.PRDATA == mem[input_packet.PADDR])
+					$display("Data matches");
+				else
+					$display("Data doesn't match");
+			end
 		end
-	endtask : write_task
+	endtask : run_phase 
 	
-	virtual task read_task();
-		output_packet = output_q.pop_front();
-		$display("Field\t Expected\t Actual", output_packet.PRDATA, mem[input_packet.PADDR]);
-		$display("PRDATA\t %0d\t %0d", mem[input_packet.PADDR], output_packet.PRDATA);
-
-		if(output_packet.PRDATA == mem[input_packet.PADDR])
-			$display("Data matches");
-		else
-			$display("Data doesn't match");
-	endtask : read_task
-
 endclass : apb_slv_scoreboard
