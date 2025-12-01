@@ -21,7 +21,7 @@ class apb_slv_passive_monitor extends uvm_monitor;
 	virtual task run_phase(uvm_phase phase);
 		forever
 		begin
-			repeat(1)@(posedge vif.monitor_cb);
+//			repeat(1)@(posedge vif.monitor_cb);
 			wait(vif.PENABLE == 1 && !vif.PWRITE);
 			monitor_sequence_item.PRDATA = vif.PRDATA;
 			monitor_sequence_item.PREADY = vif.PREADY;

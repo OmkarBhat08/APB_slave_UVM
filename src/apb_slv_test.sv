@@ -34,7 +34,6 @@ class apb_slv_write_read_test extends apb_slv_base_test;
 		seq = apb_slv_write_read_sequence::type_id::create("seq");
 		seq.start(env.act_agnt.seqr);
 		phase.drop_objection(this, "Objection dropped");
-		phase.phase_done.set_drain_time(this, 100);
 	endtask : run_phase
 
 endclass : apb_slv_write_read_test

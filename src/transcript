@@ -1,5 +1,5 @@
 # vsim -c top "+UVM_TESTNAME=apb_slv_write_read_test" -do "run -all ; quit" 
-# Start time: 00:41:19 on Dec 02,2025
+# Start time: 01:30:01 on Dec 02,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # ** Warning: top.sv(32): (vopt-2241) Connection width does not match width of port 'prdata'. The port definition is at: apb_slave.v(83).
 # //  Questa Sim
@@ -112,7 +112,6 @@
 #       aport_inputs         uvm_analysis_imp_from_inp     -     @506 
 #       aport_outputs        uvm_analysis_imp_from_out     -     @514 
 # --------------------------------------------------------------------
-# -------------------------Scoreboard @ 0-------------------------
 # ---------------------Driver in IDLE State @0---------------------
 # PSELx = 0
 # ---------------------Driver in SETUP State @5---------------------
@@ -123,8 +122,97 @@
 # PWDATA = 0
 # PSTRB = 0
 # ---------------------Driver in ACCESS State @15---------------------
-# Break key hit
-# Simulation stop requested.
-#  quit
-# End time: 00:41:30 on Dec 02,2025, Elapsed time: 0:00:11
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 1
+# PADDR = 103
+# PWDATA = 128
+# PSTRB = 1
+# --------------------------------Active monitor @15--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	103
+# PWDATA:	128
+# PSTRB:	0001
+# -------------------------Scoreboard @ 15-------------------------
+# Scoreboard writing 80 data into memory at address 67
+# --------------------------------Active monitor @25--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	103
+# PWDATA:	128
+# PSTRB:	0001
+# -------------------------Scoreboard @ 25-------------------------
+# Scoreboard writing 80 data into memory at address 67
+# ---------------------Driver in IDLE State @25---------------------
+# PSELx = 1
+# ---------------------Driver in SETUP State @35---------------------
+# PSELx = 0
+# PENABLE = 1
+# PADDR = 103
+# PWDATA = 128
+# PSTRB = 1
+# --------------------------------Active monitor @35--------------------------------
+# PSELx:	0
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	103
+# PWDATA:	128
+# PSTRB:	0001
+# ---------------------Driver in ACCESS State @45---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 0
+# PADDR = 103
+# PWDATA = 128
+# PSTRB = 1
+# --------------------------------Active monitor @45--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	103
+# PWDATA:	128
+# PSTRB:	0001
+# -------------------------------- Passive monitor @45--------------------------------
+# PRDATA:	0
+# PREADY:	0
+# PSLVERR:	0
+# Field	 Expected	 Actual0                                                                             0
+# PRDATA	 0	 0
+# Data matches
+# -------------------------------- Passive monitor @55--------------------------------
+# PRDATA:	0
+# PREADY:	0
+# PSLVERR:	0
+# --------------------------------Active monitor @55--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	103
+# PWDATA:	128
+# PSTRB:	0001
+# Field	 Expected	 Actual0                                                                             0
+# PRDATA	 0	 0
+# Data matches
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 55: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO apb_slv_subscriber.sv(79) @ 55: uvm_test_top.env.subscr [apb_slv_subscriber] [Input]: Coverage --> 37.06
+# UVM_INFO apb_slv_subscriber.sv(80) @ 55: uvm_test_top.env.subscr [apb_slv_subscriber] [Output]: Coverage --> 66.67
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :    6
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [Questa UVM]     2
+# [RNTST]     1
+# [TEST_DONE]     1
+# [apb_slv_subscriber]     2
+# ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 55 ns  Iteration: 62  Instance: /top
+# End time: 01:30:04 on Dec 02,2025, Elapsed time: 0:00:03
 # Errors: 0, Warnings: 19

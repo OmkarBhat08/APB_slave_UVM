@@ -49,14 +49,15 @@ class apb_slv_driver extends uvm_driver #(apb_slv_seq_item);
 			vif.PSTRB <= req.PSTRB;
 			$display("PSELx = %0d", vif.PSELx);
 			$display("PENABLE = %0d", vif.PENABLE);
-			$display("PWRITE= %0d", vif.PWRITE);
+			if(req.PWRITE)
+				$display("PWRITE= %0d", vif.PWRITE);
 			$display("PADDR = %0d", vif.PADDR);
 			$display("PWDATA = %0d", vif.PWDATA);
 			$display("PSTRB = %0d", vif.PSTRB);
 		@(posedge vif.driver_cb);
 			$display("---------------------Driver in ACCESS State @%0t---------------------", $time);
 			// ACCESS State
-			wait(vif.PREADY);
+			//wait(vif.PREADY);
 			vif.PENABLE <= 1;
 			$display("PSELx = %0d", vif.PSELx);
 			$display("PENABLE = %0d", vif.PENABLE);

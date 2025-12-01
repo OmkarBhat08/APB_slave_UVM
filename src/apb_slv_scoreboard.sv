@@ -30,14 +30,14 @@ class apb_slv_scoreboard extends uvm_component;
 	virtual task run_phase(uvm_phase phase);
 		forever
 		begin
-			$display("-------------------------Scoreboard @ %0t-------------------------", $time);
-			wait(input_q.size() > 0 && output_q.size() > 0);
+			wait(input_q.size() > 0 || output_q.size() > 0);
 			begin
 				input_packet = input_q.pop_front();
 				output_packet = output_q.pop_front();
 			end
 			if(input_packet.PSELx == 1 && input_packet.PENABLE == 1 && input_packet.PWRITE == 1)
 			begin
+				$display("-------------------------Scoreboard @ %0t-------------------------", $time);
 				$display("Scoreboard writing %0h data into memory at address %0h", input_packet.PWDATA, input_packet.PADDR);
 			// Prepare mask as per PSTRB
 			/*
