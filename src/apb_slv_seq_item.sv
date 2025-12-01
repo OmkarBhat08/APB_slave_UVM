@@ -1,6 +1,6 @@
-`include "defines.sv"
 `include "uvm_macros.svh"
-import uvm_pkg::*;
+`include "defines.svh"
+import uvm_pkg ::*;
 
 class apb_slv_seq_item extends uvm_sequence_item;
 	rand bit PSELx;
@@ -8,7 +8,7 @@ class apb_slv_seq_item extends uvm_sequence_item;
 	rand bit PWRITE;
 	rand bit [`ADDR_WIDTH-1:0] PADDR;
 	rand bit [`DATA_WIDTH-1:0] PWDATA;
-	rand bit [((8*`DATA_WIDTH)+7):(8*`DATA_WIDTH)] PSTRB;
+	rand bit [(`PSTRB_WIDTH/8)-1:0] PSTRB;
 
 	bit PRDATA;
 	bit PREADY;

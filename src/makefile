@@ -1,10 +1,10 @@
 # --- UVM Variables ---
 FILE ?= top.sv
 TOP  ?= top
-test ?= evm_test  # Default test name, can be overridden from the command line
+test ?= apb_slv_write_read_test  # Default test name, can be overridden from the command line
 
 # --- Coverage Variables ---
-COV_LOG_FILE   ?= evm_log.log
+COV_LOG_FILE   ?= apb_slv_log.log
 COV_DB_FILE    ?= coverage.ucdb
 COV_REPORT_DIR ?= covReport
 
@@ -42,7 +42,7 @@ d:
 
 # --- UVM Simulation Targets ---
 compile:
-	@vlog -sv evm_pkg.sv $(FILE)
+	@vlog -sv apb_slv_pkg.sv $(FILE)
 
 simulate: compile
 	@echo "--- Running Simulation (Verbosity: $(VERBOSITY), Test: $(test)) ---"

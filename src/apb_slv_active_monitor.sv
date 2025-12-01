@@ -8,7 +8,7 @@ class apb_slv_active_monitor extends uvm_monitor;
 
 	function new(string name = "apb_slv_active_monitor", uvm_component parent = null);
 		super.new(name, parent);
-		active_item_port = new("active_item_port", this)
+		active_item_port = new("active_item_port", this);
 		monitor_sequence_item = new();
 	endfunction : new
 
@@ -22,14 +22,21 @@ class apb_slv_active_monitor extends uvm_monitor;
 		repeat(1)@(vif.monitor_cb);
 		forever
 		begin
+			repeat(1)@(posedge vif.monitor_cb);
 			wait(vif.PENABLE == 1);
-			monitor_sequence_item.PSELX = vif.PSELX;
+			monitor_sequence_item.PSELx = vif.PSELx;
 			monitor_sequence_item.PENABLE = vif.PENABLE;
 			monitor_sequence_item.PWRITE = vif.PWRITE;
 			monitor_sequence_item.PADDR = vif.PADDR;
 			monitor_sequence_item.PWDATA = vif.PWDATA;
 			monitor_sequence_item.PSTRB = vif.PSTRB;
-
+			$display("--------------------------------Active monitor @%0t--------------------------------", $time);
+			$display("PSELx:\t%b",monitor_sequence_item.PSELx);
+			$display("PENABLE:\t%b",monitor_sequence_item.PENABLE);
+			$display("PWRITE:\t%b",monitor_sequence_item.PWRITE);
+			$display("PADDR:\t%0d",monitor_sequence_item.PADDR);
+			$display("PWDATA:\t%0d",monitor_sequence_item.PWDATA);
+			$display("PSTRB:\t%b",monitor_sequence_item.PSTRB);
 			active_item_port.write(monitor_sequence_item);
 		end
 	endtask : run_phase

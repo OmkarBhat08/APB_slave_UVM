@@ -1,0 +1,130 @@
+# vsim -c top "+UVM_TESTNAME=apb_slv_write_read_test" -do "run -all ; quit" 
+# Start time: 00:30:23 on Dec 02,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: top.sv(32): (vopt-2241) Connection width does not match width of port 'prdata'. The port definition is at: apb_slave.v(83).
+# //  Questa Sim
+# //  Version 10.6c linux Jul 25 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.apb_slv_interfs(fast)
+# Loading mtiUvm.uvm_pkg
+# Loading work.apb_slv_pkg(fast)
+# Loading work.top_sv_unit(fast)
+# Loading work.top(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
+# run -all 
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test apb_slv_write_read_test...
+# ** Warning: (vsim-3881) apb_slv_subscriber.sv(43): Sign-and-Width conversion applied in bin 'PRDATA0' for Coverpoint 'PRDATA'. Value '50' changed to '1 (maximum)' value.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-3882) apb_slv_subscriber.sv(43): Out of bounds value range in bin 'PRDATA0' for Coverpoint 'PRDATA' converted to nearest valid bounded range of [0:1].
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-3881) apb_slv_subscriber.sv(44): Sign-and-Width conversion applied in bin 'PRDATA1' for Coverpoint 'PRDATA'. Value '51' changed to '1 (maximum)' value.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-3881) apb_slv_subscriber.sv(44): Sign-and-Width conversion applied in bin 'PRDATA1' for Coverpoint 'PRDATA'. Value '100' changed to '1 (maximum)' value.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8475) apb_slv_subscriber.sv(44): The invalid value range [51 : 100] is found in bin 'PRDATA1' of Coverpoint 'PRDATA'. It will be ignored.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'PRDATA1' in Coverpoint 'PRDATA' of Covergroup instance '\/apb_slv_pkg::apb_slv_subscriber::output_cov ' has converged to empty list. The bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-3881) apb_slv_subscriber.sv(45): Sign-and-Width conversion applied in bin 'PRDATA2' for Coverpoint 'PRDATA'. Value '101' changed to '1 (maximum)' value.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-3881) apb_slv_subscriber.sv(45): Sign-and-Width conversion applied in bin 'PRDATA2' for Coverpoint 'PRDATA'. Value '150' changed to '1 (maximum)' value.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8475) apb_slv_subscriber.sv(45): The invalid value range [101 : 150] is found in bin 'PRDATA2' of Coverpoint 'PRDATA'. It will be ignored.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'PRDATA2' in Coverpoint 'PRDATA' of Covergroup instance '\/apb_slv_pkg::apb_slv_subscriber::output_cov ' has converged to empty list. The bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-3881) apb_slv_subscriber.sv(46): Sign-and-Width conversion applied in bin 'PRDATA3' for Coverpoint 'PRDATA'. Value '151' changed to '1 (maximum)' value.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-3881) apb_slv_subscriber.sv(46): Sign-and-Width conversion applied in bin 'PRDATA3' for Coverpoint 'PRDATA'. Value '200' changed to '1 (maximum)' value.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8475) apb_slv_subscriber.sv(46): The invalid value range [151 : 200] is found in bin 'PRDATA3' of Coverpoint 'PRDATA'. It will be ignored.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'PRDATA3' in Coverpoint 'PRDATA' of Covergroup instance '\/apb_slv_pkg::apb_slv_subscriber::output_cov ' has converged to empty list. The bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-3881) apb_slv_subscriber.sv(47): Sign-and-Width conversion applied in bin 'PRDATA4' for Coverpoint 'PRDATA'. Value '201' changed to '1 (maximum)' value.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-3881) apb_slv_subscriber.sv(47): Sign-and-Width conversion applied in bin 'PRDATA4' for Coverpoint 'PRDATA'. Value '255' changed to '1 (maximum)' value.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8475) apb_slv_subscriber.sv(47): The invalid value range [201 : 255] is found in bin 'PRDATA4' of Coverpoint 'PRDATA'. It will be ignored.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'PRDATA4' in Coverpoint 'PRDATA' of Covergroup instance '\/apb_slv_pkg::apb_slv_subscriber::output_cov ' has converged to empty list. The bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# --------------------------------------------------------------------
+# Name                       Type                          Size  Value
+# --------------------------------------------------------------------
+# uvm_test_top               apb_slv_write_read_test       -     @471 
+#   env                      apb_slv_env                   -     @478 
+#     act_agnt               apb_slv_active_agent          -     @485 
+#       act_mon              apb_slv_active_monitor        -     @702 
+#         active_item_port   uvm_analysis_port             -     @709 
+#       drv                  apb_slv_driver                -     @675 
+#         rsp_port           uvm_analysis_port             -     @690 
+#         seq_item_port      uvm_seq_item_pull_port        -     @682 
+#       seqr                 apb_slv_sequencer             -     @566 
+#         rsp_export         uvm_analysis_export           -     @573 
+#         seq_item_export    uvm_seq_item_pull_imp         -     @667 
+#         arbitration_queue  array                         0     -    
+#         lock_queue         array                         0     -    
+#         num_last_reqs      integral                      32    'd1  
+#         num_last_rsps      integral                      32    'd1  
+#     pass_agnt              apb_slv_passive_agent         -     @492 
+#       pass_mon             apb_slv_passive_monitor       -     @729 
+#         passive_item_port  uvm_analysis_port             -     @736 
+#     scb                    apb_slv_scoreboard            -     @530 
+#       inputs_export        uvm_analysis_imp_from_input   -     @537 
+#       outputs_export       uvm_analysis_imp_from_output  -     @545 
+#     subscr                 apb_slv_subscriber            -     @499 
+#       aport_inputs         uvm_analysis_imp_from_inp     -     @506 
+#       aport_outputs        uvm_analysis_imp_from_out     -     @514 
+# --------------------------------------------------------------------
+# -------------------------Scoreboard @ 0-------------------------
+# ---------------------Driver in IDLE State @0---------------------
+# PSELx = 0
+# ---------------------Driver in SETUP State @5---------------------
+# PSELx = 0
+# PENABLE = 0
+# PWRITE= 0
+# PADDR = 0
+# PWDATA = 0
+# PSTRB = 0
+# ---------------------Driver in ACCESS State @15---------------------
+# Break key hit
+# Simulation stop requested.
+#  quit
+# End time: 00:30:33 on Dec 02,2025, Elapsed time: 0:00:10
+# Errors: 0, Warnings: 19
