@@ -1,6 +1,7 @@
 # vsim -c top "+UVM_TESTNAME=apb_slv_write_read_test" -do "run -all ; quit" 
-# Start time: 19:01:11 on Dec 03,2025
+# Start time: 23:16:10 on Dec 03,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: top.sv(15): (vopt-2241) Connection width does not match width of port 'PSTRB'. The port definition is at: apb_slave.v(8).
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -83,7 +84,7 @@
 #       aport_inputs         uvm_analysis_imp_from_inp     -     @506 
 #       aport_outputs        uvm_analysis_imp_from_out     -     @514 
 # --------------------------------------------------------------------
-##############################################################################
+#####################################################################################################
 # 
 # 
 #  Design Entered reset
@@ -95,32 +96,28 @@
 # PENABLE = 0
 # PWRITE= 1
 # PADDR = 103
-# PWDATA = 128
+# PWDATA = 3320053311
 # PSTRB = 1
 # ---------------------Driver in ACCESS State @25---------------------
 # PSELx = 1
 # PENABLE = 1
 # PWRITE= 1
 # PADDR = 103
-# PWDATA = 128
+# PWDATA = 3320053311
 # PSTRB = 1
 # --------------------------------Active monitor @25--------------------------------
 # PSELx:	1
 # PENABLE:	1
 # PWRITE:	1
 # PADDR:	103
-# PWDATA:	128
-# PSTRB:	1
+# PWDATA:	3320053311
+# PSTRB:	0001
 # -------------------------Scoreboard @ 25-------------------------
-# Scoreboard writing 128 data into memory at address 103
-# 
-# 
-#  Design writing into memory
+# Scoreboard writing 63  data into memory at address 103
 # -------------------------------- Passive monitor @75--------------------------------
 # PRDATA:	0
 # PREADY:	1
 # PSLVERR:	0
-# PRDATA = 0
 # ---------------------Driver in IDLE State @75---------------------
 # PSELx = 0
 # PENABLE = 0
@@ -135,27 +132,25 @@
 # PENABLE = 1
 # PWRITE= 0
 # PADDR = 103
-# PWDATA = 198
+# PWDATA = 2846327122
 # PSTRB = 1
 # --------------------------------Active monitor @85--------------------------------
 # PSELx:	1
 # PENABLE:	1
 # PWRITE:	0
 # PADDR:	103
-# PSTRB:	1
-# 
-# 
-#  Design reading from  memory
+# PSTRB:	0001
 # -------------------------------- Passive monitor @135--------------------------------
-# PRDATA:	128
+# PRDATA:	63
 # PREADY:	1
 # PSLVERR:	0
-# PRDATA = 128
 # -------------------------Scoreboard @ 135-------------------------
-# Field		 Expected		 Actual
-# PRDATA	     128		 128
-# Data matches
-##############################################################################
+# Field		 Expected	Actual
+# PRDATA	     63		 63
+# PSLVERR	     0		 0
+# PREADY	     1		 1
+# ********************************************TEST PASSED********************************************
+#####################################################################################################
 # ---------------------Driver in IDLE State @135---------------------
 # PSELx = 0
 # PENABLE = 0
@@ -164,32 +159,28 @@
 # PENABLE = 0
 # PWRITE= 1
 # PADDR = 127
-# PWDATA = 160
+# PWDATA = 1573560660
 # PSTRB = 1
 # ---------------------Driver in ACCESS State @145---------------------
 # PSELx = 1
 # PENABLE = 1
 # PWRITE= 1
 # PADDR = 127
-# PWDATA = 160
+# PWDATA = 1573560660
 # PSTRB = 1
 # --------------------------------Active monitor @145--------------------------------
 # PSELx:	1
 # PENABLE:	1
 # PWRITE:	1
 # PADDR:	127
-# PWDATA:	160
-# PSTRB:	1
+# PWDATA:	1573560660
+# PSTRB:	0001
 # -------------------------Scoreboard @ 145-------------------------
-# Scoreboard writing 160 data into memory at address 127
-# 
-# 
-#  Design writing into memory
+# Scoreboard writing 84  data into memory at address 127
 # -------------------------------- Passive monitor @195--------------------------------
-# PRDATA:	128
+# PRDATA:	63
 # PREADY:	1
 # PSLVERR:	0
-# PRDATA = 128
 # ---------------------Driver in IDLE State @195---------------------
 # PSELx = 0
 # PENABLE = 0
@@ -204,29 +195,27 @@
 # PENABLE = 1
 # PWRITE= 0
 # PADDR = 127
-# PWDATA = 56
+# PWDATA = 3706593067
 # PSTRB = 1
 # --------------------------------Active monitor @205--------------------------------
 # PSELx:	1
 # PENABLE:	1
 # PWRITE:	0
 # PADDR:	127
-# PSTRB:	1
-# 
-# 
-#  Design reading from  memory
+# PSTRB:	0001
 # -------------------------------- Passive monitor @255--------------------------------
-# PRDATA:	160
+# PRDATA:	84
 # PREADY:	1
 # PSLVERR:	0
-# PRDATA = 160
 # -------------------------Scoreboard @ 255-------------------------
-# Field		 Expected		 Actual
-# PRDATA	     160		 160
-# Data matches
+# Field		 Expected	Actual
+# PRDATA	     84		 84
+# PSLVERR	     0		 0
+# PREADY	     1		 1
+# ********************************************TEST PASSED********************************************
 # UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 255: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
-# UVM_INFO apb_slv_subscriber.sv(82) @ 255: uvm_test_top.env.subscr [apb_slv_subscriber] [Input]: Coverage --> 36.61
-# UVM_INFO apb_slv_subscriber.sv(83) @ 255: uvm_test_top.env.subscr [apb_slv_subscriber] [Output]: Coverage --> 34.90
+# UVM_INFO apb_slv_subscriber.sv(82) @ 255: uvm_test_top.env.subscr [apb_slv_subscriber] [Input]: Coverage --> 30.36
+# UVM_INFO apb_slv_subscriber.sv(83) @ 255: uvm_test_top.env.subscr [apb_slv_subscriber] [Output]: Coverage --> 33.85
 # 
 # --- UVM Report Summary ---
 # 
@@ -242,5 +231,5 @@
 # [apb_slv_subscriber]     2
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 255 ns  Iteration: 62  Instance: /top
-# End time: 19:01:14 on Dec 03,2025, Elapsed time: 0:00:03
-# Errors: 0, Warnings: 1
+# End time: 23:16:12 on Dec 03,2025, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 2

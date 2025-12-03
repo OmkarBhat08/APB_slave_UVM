@@ -10,7 +10,7 @@ interface apb_slv_interfs(input bit PCLK, PRESETn);
 	bit PWRITE;
 	bit [`ADDR_WIDTH-1:0] PADDR;
 	bit [`DATA_WIDTH-1:0] PWDATA;
-	bit PSTRB;
+	bit [(`DATA_WIDTH/8)-1:0] PSTRB;
 
 	clocking driver_cb @(posedge PCLK);
 		output PSELx;

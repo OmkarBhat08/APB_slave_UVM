@@ -29,6 +29,17 @@ class apb_slv_driver extends uvm_driver #(apb_slv_seq_item);
 
 	virtual task drive();
 
+		idle_state_drive();
+		setup_state_drive();
+		access_state_drive();
+
+		transaction_count++;
+		prev_transaction.PSELx = req.PSELx;	
+
+		wait(vif.PREADY == 1);
+	endtask : drive
+
+	virtual task idle_state_drive();
 			//if(transaction_count==0 || (prev_transaction.PSELx != req.PSELx))
 			//begin
 				$display("---------------------Driver in IDLE State @%0t---------------------", $time);
@@ -39,39 +50,38 @@ class apb_slv_driver extends uvm_driver #(apb_slv_seq_item);
 				$display("PENABLE = 0");
 			//end
 
-			@(posedge vif.driver_cb);
-			$display("---------------------Driver in SETUP State @%0t---------------------", $time);
-			// SETUP State
-			vif.PSELx <= req.PSELx;
-			vif.PENABLE <= 0;
-			vif.PWRITE <= req.PWRITE;
-			vif.PADDR <= req.PADDR;
-			if(req.PWRITE)
-				vif.PWDATA <= req.PWDATA;
-			vif.PSTRB <= req.PSTRB;
-			$display("PSELx = %0d", req.PSELx);
-			$display("PENABLE = %0d", req.PENABLE);
-			$display("PWRITE= %0d", req.PWRITE);
-			$display("PADDR = %0d", req.PADDR);
-			if(req.PWRITE)
-				$display("PWDATA = %0d", req.PWDATA);
-			$display("PSTRB = %0d", req.PSTRB);
+	endtask : idle_state_drive
 
+	virtual task setup_state_drive();
 		@(posedge vif.driver_cb);
-
-			$display("---------------------Driver in ACCESS State @%0t---------------------", $time);
-			// ACCESS State
-			vif.PENABLE <= 1;
-			$display("PSELx = %0d", req.PSELx);
-			$display("PENABLE = 1");
-			$display("PWRITE= %0d", req.PWRITE);
-			$display("PADDR = %0d", req.PADDR);
+		$display("---------------------Driver in SETUP State @%0t---------------------", $time);
+		// SETUP State
+		vif.PSELx <= req.PSELx;
+		vif.PENABLE <= 0;
+		vif.PWRITE <= req.PWRITE;
+		vif.PADDR <= req.PADDR;
+		if(req.PWRITE)
+			vif.PWDATA <= req.PWDATA;
+		vif.PSTRB <= req.PSTRB;
+		$display("PSELx = %0d", req.PSELx);
+		$display("PENABLE = %0d", req.PENABLE);
+		$display("PWRITE= %0d", req.PWRITE);
+		$display("PADDR = %0d", req.PADDR);
+		if(req.PWRITE)
 			$display("PWDATA = %0d", req.PWDATA);
-			$display("PSTRB = %0d", req.PSTRB);
+		$display("PSTRB = %0d", req.PSTRB);
+	endtask : setup_state_drive
 
-			transaction_count++;
-			prev_transaction.PSELx = req.PSELx;	
-
-			wait(vif.PREADY == 1);
-	endtask : drive
+	virtual task access_state_drive();
+		@(posedge vif.driver_cb);
+		$display("---------------------Driver in ACCESS State @%0t---------------------", $time);
+		// ACCESS State
+		vif.PENABLE <= 1;
+		$display("PSELx = %0d", req.PSELx);
+		$display("PENABLE = 1");
+		$display("PWRITE= %0d", req.PWRITE);
+		$display("PADDR = %0d", req.PADDR);
+		$display("PWDATA = %0d", req.PWDATA);
+		$display("PSTRB = %0d", req.PSTRB);
+	endtask : access_state_drive
 endclass : apb_slv_driver

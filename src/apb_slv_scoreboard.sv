@@ -6,9 +6,13 @@ class apb_slv_scoreboard extends uvm_component;
 	uvm_analysis_imp_from_output #(apb_slv_seq_item, apb_slv_scoreboard) outputs_export;
 
 	apb_slv_seq_item input_q[$], output_q[$];
-	bit [(`DATA_WIDTH)-1:0] mem [0:(2**`ADDR_WIDTH)-1];
 	apb_slv_seq_item input_packet, output_packet;
 
+	bit [(`DATA_WIDTH)-1:0] mem [0:(2**`ADDR_WIDTH)-1];
+	bit PSLVERR;
+	int index;
+	bit [`DATA_WIDTH-1:0] mask;
+	
 	`uvm_component_utils(apb_slv_scoreboard)
 
 	function new (string name = "apb_slv_scoreboard", uvm_component parent = null);
@@ -35,26 +39,46 @@ class apb_slv_scoreboard extends uvm_component;
 					if(input_packet.PSELx == 1 && input_packet.PENABLE == 1 && input_packet.PWRITE == 1)
 					begin
 						$display("-------------------------Scoreboard @ %0t-------------------------", $time);
-						$display("Scoreboard writing %0d data into memory at address %0d", input_packet.PWDATA, input_packet.PADDR);
-						mem[input_packet.PADDR] =	input_packet.PWDATA;
+						index = 0;
+						for(int i=0; i<(`DATA_WIDTH/8); i++) //For each strobe bit
+						begin
+							for(int j=0; j<8;j++)// for each byte
+							begin
+								if((input_packet.PSTRB>>i)&'d1)
+									mask[index] = 1;	
+								else
+									mask[index] = 0;	
+								index++;
+							end
+						end
+						if(input_packet.PADDR[`ADDR_WIDTH-1:`ADDR_WIDTH-2] == 2'b11)
+						begin
+							$display("Writing to invalid address, will result in PSLVERR");
+							PSLVERR =1;
+						end
+						else
+						begin
+            	mem[input_packet.PADDR] = (mem[input_packet.PADDR] & (~mask)) | (input_packet.PWDATA & mask);  // Write operation
+							$display("Scoreboard writing %0d  data into memory at address %0d", mem[input_packet.PADDR], input_packet.PADDR);
+						end
 					end
 				end
 
 				begin
 					wait(output_q.size() > 0);
 					output_packet = output_q.pop_front();
-					$display("PRDATA = %0d", output_packet.PRDATA);
 					if(input_packet.PSELx == 1 && input_packet.PENABLE == 1 && input_packet.PWRITE == 0)
 					begin
 						$display("-------------------------Scoreboard @ %0t-------------------------", $time);
-						$display("Field\t\t Expected\t\t Actual");
+						$display("Field\t\t Expected\tActual");
 						$display("PRDATA\t     %0d\t\t %0d", mem[input_packet.PADDR], output_packet.PRDATA);
-						//$display("PADDR = %0d", input_packet.PADDR);
+						$display("PSLVERR\t     %0d\t\t %0d", PSLVERR, output_packet.PSLVERR);
+						$display("PREADY\t     1\t\t %0d", output_packet.PREADY);
 
-						if(output_packet.PRDATA == mem[input_packet.PADDR])
-							$display("Data matches");
+						if((mem[input_packet.PADDR] == output_packet.PRDATA) && (PSLVERR == output_packet.PSLVERR))
+							$display("********************************************TEST PASSED********************************************");
 						else
-							$display("Data doesn't match");
+							$display("********************************************TEST FAILED********************************************");
 					end
 				end
 			join

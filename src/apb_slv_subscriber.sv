@@ -15,24 +15,18 @@ class apb_slv_subscriber extends uvm_component;
 		PSELX: coverpoint input_trans.PSELx;
 		PENABLE: coverpoint input_trans.PENABLE;
 		PWRITE: coverpoint input_trans.PWRITE;
-		PADDR: coverpoint input_trans.PADDR;
-		/*
-		{bins PADDR0 = {[0:50]};
-					                              bins PADDR1 = {[51:100]};
-					                              bins PADDR2 = {[101:150]};
-					                    	        bins PADDR3 = {[151:200]};
-					                              bins PADDR4 = {[201:255]};
+		PADDR: coverpoint input_trans.PADDR{bins PADDR0 = {[0:50]};
+					                              bins PADDR1 = {[0:3]};
+					                              bins PADDR2 = {[4:15]};
+					                    	        bins PADDR3 = {[16:63]};
+					                              bins PADDR4 = {[64:255]};
 					                             }
-		*/
-			PWDATA: coverpoint input_trans.PWDATA;
-		/*
-		{bins PWDATA0 = {[0:50]};
+			PWDATA: coverpoint input_trans.PWDATA{bins PWDATA0 = {[0:50]};
 						                              bins PWDATA1 = {[51:100]};
 						                              bins PWDATA2 = {[101:150]};
 						                              bins PWDATA3 = {[151:200]};
 						                              bins PWDATA4 = {[201:255]};
 	                                       }
-		*/
 		PSTRB: coverpoint input_trans.PSTRB;
 		PADDRxPWDATA: cross PADDR, PWDATA;
 	endgroup : input_cov
