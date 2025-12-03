@@ -1,5 +1,5 @@
 # vsim -c top "+UVM_TESTNAME=apb_slv_write_read_test" -do "run -all ; quit" 
-# Start time: 15:35:07 on Dec 03,2025
+# Start time: 16:40:20 on Dec 03,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
@@ -55,21 +55,21 @@
 # uvm_test_top               apb_slv_write_read_test       -     @471 
 #   env                      apb_slv_env                   -     @478 
 #     act_agnt               apb_slv_active_agent          -     @485 
-#       act_mon              apb_slv_active_monitor        -     @702 
-#         active_item_port   uvm_analysis_port             -     @709 
-#       drv                  apb_slv_driver                -     @675 
-#         rsp_port           uvm_analysis_port             -     @690 
-#         seq_item_port      uvm_seq_item_pull_port        -     @682 
-#       seqr                 apb_slv_sequencer             -     @566 
-#         rsp_export         uvm_analysis_export           -     @573 
-#         seq_item_export    uvm_seq_item_pull_imp         -     @667 
+#       act_mon              apb_slv_active_monitor        -     @694 
+#         active_item_port   uvm_analysis_port             -     @701 
+#       drv                  apb_slv_driver                -     @667 
+#         rsp_port           uvm_analysis_port             -     @682 
+#         seq_item_port      uvm_seq_item_pull_port        -     @674 
+#       seqr                 apb_slv_sequencer             -     @558 
+#         rsp_export         uvm_analysis_export           -     @565 
+#         seq_item_export    uvm_seq_item_pull_imp         -     @659 
 #         arbitration_queue  array                         0     -    
 #         lock_queue         array                         0     -    
 #         num_last_reqs      integral                      32    'd1  
 #         num_last_rsps      integral                      32    'd1  
 #     pass_agnt              apb_slv_passive_agent         -     @492 
-#       pass_mon             apb_slv_passive_monitor       -     @725 
-#         passive_item_port  uvm_analysis_port             -     @732 
+#       pass_mon             apb_slv_passive_monitor       -     @717 
+#         passive_item_port  uvm_analysis_port             -     @724 
 #     scb                    apb_slv_scoreboard            -     @530 
 #       inputs_export        uvm_analysis_imp_from_input   -     @537 
 #       outputs_export       uvm_analysis_imp_from_output  -     @545 
@@ -120,7 +120,7 @@
 # PSLVERR:	0
 # PRDATA = 0
 # ---------------------Driver in IDLE State @35---------------------
-# PSELx = 1
+# PSELx = 0
 # Design in ACCESS
 # Writing in Design paddr:103 pwdata:128
 # Design in IDLE
@@ -154,12 +154,13 @@
 # PSLVERR:	0
 # PRDATA = 128
 # -------------------------Scoreboard @ 65-------------------------
-# Field		 Expected	 Actual
-# PRDATA	     0		 128
-# Data doesn't match
+# Field		 Expected		 Actual
+# PRDATA	     128		 128
+# PADDR = 103
+# Data matches
 #######################################
 # ---------------------Driver in IDLE State @65---------------------
-# PSELx = 1
+# PSELx = 0
 # Design in ACCESS
 # Reading in Design paddr:103 pwdata:128
 # Design in IDLE
@@ -197,7 +198,7 @@
 # PSLVERR:	0
 # PRDATA = 0
 # ---------------------Driver in IDLE State @95---------------------
-# PSELx = 1
+# PSELx = 0
 # Design in ACCESS
 # Writing in Design paddr:127 pwdata:160
 # Design in IDLE
@@ -231,9 +232,10 @@
 # PSLVERR:	0
 # PRDATA = 160
 # -------------------------Scoreboard @ 125-------------------------
-# Field		 Expected	 Actual
-# PRDATA	     0		 160
-# Data doesn't match
+# Field		 Expected		 Actual
+# PRDATA	     160		 160
+# PADDR = 127
+# Data matches
 #######################################
 # UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 125: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 # UVM_INFO apb_slv_subscriber.sv(82) @ 125: uvm_test_top.env.subscr [apb_slv_subscriber] [Input]: Coverage --> 36.61
@@ -253,5 +255,5 @@
 # [apb_slv_subscriber]     2
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 125 ns  Iteration: 65  Instance: /top
-# End time: 15:35:10 on Dec 03,2025, Elapsed time: 0:00:03
+# End time: 16:40:23 on Dec 03,2025, Elapsed time: 0:00:03
 # Errors: 3, Warnings: 0

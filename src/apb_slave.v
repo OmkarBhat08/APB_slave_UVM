@@ -23,7 +23,7 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 8)(
 	begin
     if (!PRESETn) 
 		begin
-			$display("\n\n ENtered reset");
+			$display("\n\n Design Entered reset");
       PREADY  <= 0;
       PSLVERR <= 0;
       PRDATA  <= 8'b0;
@@ -48,14 +48,14 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 8)(
 
       if (transaction_active) 
 			begin
-				$display("\n\n Entered transaction");
+				$display("\n\n Design Entered transaction");
         if (wait_counter < N - 1) 
 				begin
           wait_counter <= wait_counter + 1; // Incrementing wait counter
         end
         else 
 				begin
-					$display("\n\n Entered working");
+					$display("\n\n Design Entered working");
           PREADY <= 1;  // Transaction complete hogya
           transaction_active <= 0; // Reset transaction flag
 
@@ -72,6 +72,7 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 8)(
           end
           else begin
             PRDATA <= mem[PADDR[2:0]]; // Read operation
+							$display("\n\n Design reading from  memory");
           end
         end
       end
@@ -82,6 +83,7 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 8)(
   end
 endmodule
 */
+
 module apb_slave #(parameter ADDR_WIDTH = 8, DATA_WIDTH = 8)
 (
   input                        clk,

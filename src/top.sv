@@ -6,10 +6,10 @@
   `include "uvm_macros.svh"
   import uvm_pkg::*;
 	import apb_slv_pkg::*;
-
 module top();
 	bit PCLK, PRESETn;
 	apb_slv_interfs interfs (PCLK, PRESETn);
+
 /*
 	apb_slave #(.ADDR_WIDTH(`ADDR_WIDTH),
     					.DATA_WIDTH(`DATA_WIDTH))
@@ -26,7 +26,6 @@ module top();
 							.PREADY(interfs.PREADY),
 							.PSLVERR(interfs.PSLVERR));	
 */
-
 	apb_slave #(.ADDR_WIDTH(`ADDR_WIDTH),
     					.DATA_WIDTH(`DATA_WIDTH))
 					DUT (
@@ -49,7 +48,6 @@ module top();
 	initial
 	begin
 		uvm_config_db#(virtual apb_slv_interfs)::set(null,"*","vif",interfs);
-		//uvm_config_db#(virtual apb_intf)::set(null, "*", "apb_intf", intf);
 		PRESETn = 0;
 		#10 PRESETn = 1;
 

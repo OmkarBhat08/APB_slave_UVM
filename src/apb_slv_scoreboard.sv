@@ -6,7 +6,7 @@ class apb_slv_scoreboard extends uvm_component;
 	uvm_analysis_imp_from_output #(apb_slv_seq_item, apb_slv_scoreboard) outputs_export;
 
 	apb_slv_seq_item input_q[$], output_q[$];
-	bit [(2**`ADDR_WIDTH)-1:0] mem [`DATA_WIDTH-1:0];
+	bit [(`DATA_WIDTH)-1:0] mem [0:(2**`ADDR_WIDTH)-1];
 	apb_slv_seq_item input_packet, output_packet;
 
 	`uvm_component_utils(apb_slv_scoreboard)
@@ -15,8 +15,6 @@ class apb_slv_scoreboard extends uvm_component;
 		super.new(name, parent);
 		inputs_export = new("inputs_export", this);
 		outputs_export = new("outputs_export", this);
-		input_packet  = new();
-		output_packet  = new();
 	endfunction : new
 
 	function void write_from_input(apb_slv_seq_item incoming_input_transaction);
@@ -49,18 +47,11 @@ class apb_slv_scoreboard extends uvm_component;
 					if(input_packet.PSELx == 1 && input_packet.PENABLE == 1 && input_packet.PWRITE == 0)
 					begin
 						$display("-------------------------Scoreboard @ %0t-------------------------", $time);
-						$display("Field\t\t Expected\t Actual");
+						$display("Field\t\t Expected\t\t Actual");
 						$display("PRDATA\t     %0d\t\t %0d", mem[input_packet.PADDR], output_packet.PRDATA);
 
-						/*
-						$display("PSELx = %0d", input_packet.PSELx);
-						$display("PENABLE = %0d", input_packet.PENABLE);
-						$display("PWRITE= %0d", input_packet.PWRITE);
 						$display("PADDR = %0d", input_packet.PADDR);
-						$display("PWDATA = %0d", input_packet.PWDATA);
-						$display("PSTRB = %0d", input_packet.PSTRB);
-						$display("PSTRB = %0d", input_packet.PSTRB);
-	*/
+
 						if(output_packet.PRDATA == mem[input_packet.PADDR])
 							$display("Data matches");
 						else
