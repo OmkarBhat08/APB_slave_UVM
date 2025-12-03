@@ -14,6 +14,7 @@ interface apb_slv_interfs(input bit PCLK, PRESETn);
 
 	clocking driver_cb @(posedge PCLK);
 		output PSELx;
+		output PRESETn;
 		output PENABLE;
 		output PWRITE;
 		output PADDR;
@@ -24,6 +25,7 @@ interface apb_slv_interfs(input bit PCLK, PRESETn);
 	endclocking : driver_cb
 
 	clocking monitor_cb @(posedge PCLK);
+		input PRESETn;
 		input PSELx;
 		input PENABLE;
 		input PWRITE;

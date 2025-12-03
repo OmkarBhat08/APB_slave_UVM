@@ -10,7 +10,6 @@ module top();
 	bit PCLK, PRESETn;
 	apb_slv_interfs interfs (PCLK, PRESETn);
 
-/*
 	apb_slave #(.ADDR_WIDTH(`ADDR_WIDTH),
     					.DATA_WIDTH(`DATA_WIDTH))
 					DUT (
@@ -25,7 +24,7 @@ module top();
 							.PRDATA(interfs.PRDATA),
 							.PREADY(interfs.PREADY),
 							.PSLVERR(interfs.PSLVERR));	
-*/
+/*
 	apb_slave #(.ADDR_WIDTH(`ADDR_WIDTH),
     					.DATA_WIDTH(`DATA_WIDTH))
 					DUT (
@@ -40,6 +39,7 @@ module top();
 							.prdata(interfs.PRDATA),
 							.pready(interfs.PREADY),
 							.pslverr(interfs.PSLVERR));	
+	*/
 	
 	bind interfs apb_slv_assertions ASSERTION (.*);
 	always
@@ -50,9 +50,6 @@ module top();
 		uvm_config_db#(virtual apb_slv_interfs)::set(null,"*","vif",interfs);
 		PRESETn = 0;
 		#10 PRESETn = 1;
-
-		$dumpfile("dump.vcd");
-		$dumpvars;
 	end
 
 	initial

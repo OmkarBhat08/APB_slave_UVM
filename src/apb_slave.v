@@ -1,4 +1,3 @@
-/*
 module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 8)(
     input         PCLK,      // Peripheral Clock
     input         PRESETn,   // Active Low Reset
@@ -48,14 +47,12 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 8)(
 
       if (transaction_active) 
 			begin
-				$display("\n\n Design Entered transaction");
         if (wait_counter < N - 1) 
 				begin
           wait_counter <= wait_counter + 1; // Incrementing wait counter
         end
         else 
 				begin
-					$display("\n\n Design Entered working");
           PREADY <= 1;  // Transaction complete hogya
           transaction_active <= 0; // Reset transaction flag
 
@@ -82,8 +79,7 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 8)(
     end
   end
 endmodule
-*/
-
+/*
 module apb_slave #(parameter ADDR_WIDTH = 8, DATA_WIDTH = 8)
 (
   input                        clk,
@@ -154,3 +150,4 @@ module apb_slave #(parameter ADDR_WIDTH = 8, DATA_WIDTH = 8)
  end
 
 endmodule
+*/

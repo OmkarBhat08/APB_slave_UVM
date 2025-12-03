@@ -49,8 +49,7 @@ class apb_slv_scoreboard extends uvm_component;
 						$display("-------------------------Scoreboard @ %0t-------------------------", $time);
 						$display("Field\t\t Expected\t\t Actual");
 						$display("PRDATA\t     %0d\t\t %0d", mem[input_packet.PADDR], output_packet.PRDATA);
-
-						$display("PADDR = %0d", input_packet.PADDR);
+						//$display("PADDR = %0d", input_packet.PADDR);
 
 						if(output_packet.PRDATA == mem[input_packet.PADDR])
 							$display("Data matches");

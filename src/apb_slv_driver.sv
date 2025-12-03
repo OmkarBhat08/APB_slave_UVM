@@ -30,12 +30,14 @@ class apb_slv_driver extends uvm_driver #(apb_slv_seq_item);
 	virtual task drive();
 
 			//if(transaction_count==0 || (prev_transaction.PSELx != req.PSELx))
-			begin
+			//begin
 				$display("---------------------Driver in IDLE State @%0t---------------------", $time);
 				// IDLE State
 				vif.PSELx <= 0;
+				vif.PENABLE <= 0;
 				$display("PSELx = 0");
-			end
+				$display("PENABLE = 0");
+			//end
 
 			@(posedge vif.driver_cb);
 			$display("---------------------Driver in SETUP State @%0t---------------------", $time);
@@ -69,14 +71,7 @@ class apb_slv_driver extends uvm_driver #(apb_slv_seq_item);
 
 			transaction_count++;
 			prev_transaction.PSELx = req.PSELx;	
-	//	Ending the transaction
-			//wait(vif.PREADY == 1);
-	/*
-			@(posedge vif.driver_cb);
-			vif.PSELx   <= 0;
-			vif.PENABLE <= 0;
-			$display("---------------------Driver ending the transaction @%0t---------------------", $time);
-	*/
-			repeat(1)@(posedge vif.driver_cb);
+
+			wait(vif.PREADY == 1);
 	endtask : drive
 endclass : apb_slv_driver
