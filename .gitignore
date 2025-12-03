@@ -1,2 +1,4 @@
 # Exclude the work directory
 /src/work/
+/src/vsim_stacktrace.vstf
+/src/dump.vcd

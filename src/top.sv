@@ -2,7 +2,7 @@
 `include "apb_slv_interfs.sv"
 `include "apb_slv_pkg.sv"
 `include "apb_slave.v"
-//`include "apb_slv_assertions.sv"
+`include "apb_slv_assertions.sv"
   `include "uvm_macros.svh"
   import uvm_pkg::*;
 	import apb_slv_pkg::*;
@@ -12,8 +12,7 @@ module top();
 	apb_slv_interfs interfs (PCLK, PRESETn);
 /*
 	apb_slave #(.ADDR_WIDTH(`ADDR_WIDTH),
-    					.DATA_WIDTH(`DATA_WIDTH),
-    					.MEM_DEPTH(`MEM_DEPTH))
+    					.DATA_WIDTH(`DATA_WIDTH))
 					DUT (
 							.PCLK(PCLK),
 	 						.PRESETn(PRESETn),
@@ -27,8 +26,9 @@ module top();
 							.PREADY(interfs.PREADY),
 							.PSLVERR(interfs.PSLVERR));	
 */
+
 	apb_slave #(.ADDR_WIDTH(`ADDR_WIDTH),
-    					.WIDTH(`DATA_WIDTH))
+    					.DATA_WIDTH(`DATA_WIDTH))
 					DUT (
 							.clk(PCLK),
 	 						.rst_n(PRESETn),
@@ -42,7 +42,7 @@ module top();
 							.pready(interfs.PREADY),
 							.pslverr(interfs.PSLVERR));	
 	
-	//bind interfs apb_slv_assertions ASSERTION (.*);
+	bind interfs apb_slv_assertions ASSERTION (.*);
 	always
 		#5 PCLK = ~PCLK;
 
@@ -50,6 +50,8 @@ module top();
 	begin
 		uvm_config_db#(virtual apb_slv_interfs)::set(null,"*","vif",interfs);
 		//uvm_config_db#(virtual apb_intf)::set(null, "*", "apb_intf", intf);
+		PRESETn = 0;
+		#10 PRESETn = 1;
 
 		$dumpfile("dump.vcd");
 		$dumpvars;

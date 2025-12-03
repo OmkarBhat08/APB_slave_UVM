@@ -8,9 +8,9 @@ class apb_slv_seq_item extends uvm_sequence_item;
 	rand bit PWRITE;
 	rand bit [`ADDR_WIDTH-1:0] PADDR;
 	rand bit [`DATA_WIDTH-1:0] PWDATA;
-	rand bit [(`PSTRB_WIDTH/8)-1:0] PSTRB;
+	rand bit PSTRB;
 
-	bit PRDATA;
+	bit [`DATA_WIDTH-1:0] PRDATA;
 	bit PREADY;
 	bit PSLVERR;
 

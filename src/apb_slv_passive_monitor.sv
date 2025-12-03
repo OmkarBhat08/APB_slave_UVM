@@ -9,7 +9,6 @@ class apb_slv_passive_monitor extends uvm_monitor;
 	function new(string name = "apb_slv_passive_monitor", uvm_component parent = null);
 		super.new(name, parent);
 		passive_item_port = new("passive_item_port", this);
-		monitor_sequence_item = new();
 	endfunction : new
 
 	function void build_phase(uvm_phase phase);
@@ -21,18 +20,18 @@ class apb_slv_passive_monitor extends uvm_monitor;
 	virtual task run_phase(uvm_phase phase);
 		forever
 		begin
-//			repeat(1)@(posedge vif.monitor_cb);
-			wait(vif.PENABLE == 1 && !vif.PWRITE);
+			monitor_sequence_item = apb_slv_seq_item::type_id::create("monitor_sequence_item");
+			wait(vif.PENABLE && vif.PSELx && vif.PREADY);
 			monitor_sequence_item.PRDATA = vif.PRDATA;
 			monitor_sequence_item.PREADY = vif.PREADY;
 			monitor_sequence_item.PSLVERR = vif.PSLVERR;
 			$display("-------------------------------- Passive monitor @%0t--------------------------------", $time);
-			$display("PRDATA:\t%b",monitor_sequence_item.PRDATA);
+			$display("PRDATA:\t%0d",monitor_sequence_item.PRDATA);
 			$display("PREADY:\t%b",monitor_sequence_item.PREADY);
 			$display("PSLVERR:\t%b",monitor_sequence_item.PSLVERR);
 
 			passive_item_port.write(monitor_sequence_item);
-			repeat(1)@(posedge vif.monitor_cb);
+			repeat(2)@(posedge vif.monitor_cb);
 		end
 	endtask : run_phase
 endclass : apb_slv_passive_monitor

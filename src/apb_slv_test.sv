@@ -32,7 +32,11 @@ class apb_slv_write_read_test extends apb_slv_base_test;
 		apb_slv_write_read_sequence seq;
 		phase.raise_objection(this, "Objection raised");
 		seq = apb_slv_write_read_sequence::type_id::create("seq");
-		seq.start(env.act_agnt.seqr);
+		repeat(2)
+		begin
+			seq.start(env.act_agnt.seqr);
+			$display("#######################################");
+		end
 		phase.drop_objection(this, "Objection dropped");
 	endtask : run_phase
 

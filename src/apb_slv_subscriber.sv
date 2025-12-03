@@ -40,12 +40,15 @@ class apb_slv_subscriber extends uvm_component;
 	covergroup output_cov();
 		PREADY: coverpoint output_trans.PREADY;
 		PSLVERR: coverpoint output_trans.PSLVERR;
-		PRDATA: coverpoint output_trans.PRDATA{bins PRDATA0 = {[0:50]};
+		PRDATA: coverpoint output_trans.PRDATA;
+		/*
+																					{bins PRDATA0 = {[0:50]};
 						                               bins PRDATA1 = {[51:100]};
 						                               bins PRDATA2 = {[101:150]};
 						                               bins PRDATA3 = {[151:200]};
 						                               bins PRDATA4 = {[201:255]};
 	                                        }
+		*/
 	endgroup : output_cov
 
 	function new (string name = "apb_slv_subscriber", uvm_component parent = null);

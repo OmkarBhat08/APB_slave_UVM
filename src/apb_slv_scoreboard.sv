@@ -30,41 +30,45 @@ class apb_slv_scoreboard extends uvm_component;
 	virtual task run_phase(uvm_phase phase);
 		forever
 		begin
-			wait(input_q.size() > 0 || output_q.size() > 0);
-			begin
-				input_packet = input_q.pop_front();
-				output_packet = output_q.pop_front();
-			end
-			if(input_packet.PSELx == 1 && input_packet.PENABLE == 1 && input_packet.PWRITE == 1)
-			begin
-				$display("-------------------------Scoreboard @ %0t-------------------------", $time);
-				$display("Scoreboard writing %0h data into memory at address %0h", input_packet.PWDATA, input_packet.PADDR);
-			// Prepare mask as per PSTRB
-			/*
-			if(input_packet.PSTRB[0])
-				mask[7:0] = 8'hFF;
+			fork 
+				begin
+					wait(input_q.size() > 0);
+					input_packet = input_q.pop_front();
+					if(input_packet.PSELx == 1 && input_packet.PENABLE == 1 && input_packet.PWRITE == 1)
+					begin
+						$display("-------------------------Scoreboard @ %0t-------------------------", $time);
+						$display("Scoreboard writing %0d data into memory at address %0d", input_packet.PWDATA, input_packet.PADDR);
+						mem[input_packet.PADDR] =	input_packet.PWDATA;
+					end
+				end
 
-			if(input_packet.PSTRB[1])
-				mask[15:8] = 8'hFF;
+				begin
+					wait(output_q.size() > 0);
+					output_packet = output_q.pop_front();
+					$display("PRDATA = %0d", output_packet.PRDATA);
+					if(input_packet.PSELx == 1 && input_packet.PENABLE == 1 && input_packet.PWRITE == 0)
+					begin
+						$display("-------------------------Scoreboard @ %0t-------------------------", $time);
+						$display("Field\t\t Expected\t Actual");
+						$display("PRDATA\t     %0d\t\t %0d", mem[input_packet.PADDR], output_packet.PRDATA);
 
-			if(input_packet.PSTRB[2])
-				mask[23:16] = 8'hFF;
+						/*
+						$display("PSELx = %0d", input_packet.PSELx);
+						$display("PENABLE = %0d", input_packet.PENABLE);
+						$display("PWRITE= %0d", input_packet.PWRITE);
+						$display("PADDR = %0d", input_packet.PADDR);
+						$display("PWDATA = %0d", input_packet.PWDATA);
+						$display("PSTRB = %0d", input_packet.PSTRB);
+						$display("PSTRB = %0d", input_packet.PSTRB);
+	*/
+						if(output_packet.PRDATA == mem[input_packet.PADDR])
+							$display("Data matches");
+						else
+							$display("Data doesn't match");
+					end
+				end
+			join
 
-			if(input_packet.PSTRB[3])
-				mask[31:24] = 8'hFF;
-*/
-				mem[input_packet.PADDR] =	input_packet.PWDATA;
-			end
-			if(input_packet.PSELx == 1 && input_packet.PENABLE == 1 && input_packet.PWRITE == 0)
-			begin
-				$display("Field\t Expected\t Actual", output_packet.PRDATA, mem[input_packet.PADDR]);
-				$display("PRDATA\t %0d\t %0d", mem[input_packet.PADDR], output_packet.PRDATA);
-
-				if(output_packet.PRDATA == mem[input_packet.PADDR])
-					$display("Data matches");
-				else
-					$display("Data doesn't match");
-			end
 		end
 	endtask : run_phase 
 	

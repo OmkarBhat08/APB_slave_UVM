@@ -1,7 +1,6 @@
 # vsim -c top "+UVM_TESTNAME=apb_slv_write_read_test" -do "run -all ; quit" 
-# Start time: 01:30:01 on Dec 02,2025
+# Start time: 15:35:07 on Dec 03,2025
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# ** Warning: top.sv(32): (vopt-2241) Connection width does not match width of port 'prdata'. The port definition is at: apb_slave.v(83).
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -22,6 +21,8 @@
 # Loading work.apb_slv_pkg(fast)
 # Loading work.top_sv_unit(fast)
 # Loading work.top(fast)
+# Loading work.apb_slv_interfs(fast)
+# Loading work.apb_slv_assertions(fast)
 # Loading mtiUvm.questa_uvm_pkg(fast)
 # Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
 # run -all 
@@ -48,42 +49,6 @@
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
 # UVM_INFO @ 0: reporter [RNTST] Running test apb_slv_write_read_test...
-# ** Warning: (vsim-3881) apb_slv_subscriber.sv(43): Sign-and-Width conversion applied in bin 'PRDATA0' for Coverpoint 'PRDATA'. Value '50' changed to '1 (maximum)' value.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-3882) apb_slv_subscriber.sv(43): Out of bounds value range in bin 'PRDATA0' for Coverpoint 'PRDATA' converted to nearest valid bounded range of [0:1].
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-3881) apb_slv_subscriber.sv(44): Sign-and-Width conversion applied in bin 'PRDATA1' for Coverpoint 'PRDATA'. Value '51' changed to '1 (maximum)' value.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-3881) apb_slv_subscriber.sv(44): Sign-and-Width conversion applied in bin 'PRDATA1' for Coverpoint 'PRDATA'. Value '100' changed to '1 (maximum)' value.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8475) apb_slv_subscriber.sv(44): The invalid value range [51 : 100] is found in bin 'PRDATA1' of Coverpoint 'PRDATA'. It will be ignored.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'PRDATA1' in Coverpoint 'PRDATA' of Covergroup instance '\/apb_slv_pkg::apb_slv_subscriber::output_cov ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-3881) apb_slv_subscriber.sv(45): Sign-and-Width conversion applied in bin 'PRDATA2' for Coverpoint 'PRDATA'. Value '101' changed to '1 (maximum)' value.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-3881) apb_slv_subscriber.sv(45): Sign-and-Width conversion applied in bin 'PRDATA2' for Coverpoint 'PRDATA'. Value '150' changed to '1 (maximum)' value.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8475) apb_slv_subscriber.sv(45): The invalid value range [101 : 150] is found in bin 'PRDATA2' of Coverpoint 'PRDATA'. It will be ignored.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'PRDATA2' in Coverpoint 'PRDATA' of Covergroup instance '\/apb_slv_pkg::apb_slv_subscriber::output_cov ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-3881) apb_slv_subscriber.sv(46): Sign-and-Width conversion applied in bin 'PRDATA3' for Coverpoint 'PRDATA'. Value '151' changed to '1 (maximum)' value.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-3881) apb_slv_subscriber.sv(46): Sign-and-Width conversion applied in bin 'PRDATA3' for Coverpoint 'PRDATA'. Value '200' changed to '1 (maximum)' value.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8475) apb_slv_subscriber.sv(46): The invalid value range [151 : 200] is found in bin 'PRDATA3' of Coverpoint 'PRDATA'. It will be ignored.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'PRDATA3' in Coverpoint 'PRDATA' of Covergroup instance '\/apb_slv_pkg::apb_slv_subscriber::output_cov ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-3881) apb_slv_subscriber.sv(47): Sign-and-Width conversion applied in bin 'PRDATA4' for Coverpoint 'PRDATA'. Value '201' changed to '1 (maximum)' value.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-3881) apb_slv_subscriber.sv(47): Sign-and-Width conversion applied in bin 'PRDATA4' for Coverpoint 'PRDATA'. Value '255' changed to '1 (maximum)' value.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8475) apb_slv_subscriber.sv(47): The invalid value range [201 : 255] is found in bin 'PRDATA4' of Coverpoint 'PRDATA'. It will be ignored.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'PRDATA4' in Coverpoint 'PRDATA' of Covergroup instance '\/apb_slv_pkg::apb_slv_subscriber::output_cov ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # --------------------------------------------------------------------
 # Name                       Type                          Size  Value
 # --------------------------------------------------------------------
@@ -103,8 +68,8 @@
 #         num_last_reqs      integral                      32    'd1  
 #         num_last_rsps      integral                      32    'd1  
 #     pass_agnt              apb_slv_passive_agent         -     @492 
-#       pass_mon             apb_slv_passive_monitor       -     @729 
-#         passive_item_port  uvm_analysis_port             -     @736 
+#       pass_mon             apb_slv_passive_monitor       -     @725 
+#         passive_item_port  uvm_analysis_port             -     @732 
 #     scb                    apb_slv_scoreboard            -     @530 
 #       inputs_export        uvm_analysis_imp_from_input   -     @537 
 #       outputs_export       uvm_analysis_imp_from_output  -     @545 
@@ -112,93 +77,167 @@
 #       aport_inputs         uvm_analysis_imp_from_inp     -     @506 
 #       aport_outputs        uvm_analysis_imp_from_out     -     @514 
 # --------------------------------------------------------------------
-# ---------------------Driver in IDLE State @0---------------------
+# Design in IDLE
+# ---------------------Driver in IDLE State @5---------------------
 # PSELx = 0
-# ---------------------Driver in SETUP State @5---------------------
-# PSELx = 0
-# PENABLE = 0
-# PWRITE= 0
-# PADDR = 0
-# PWDATA = 0
-# PSTRB = 0
-# ---------------------Driver in ACCESS State @15---------------------
+# ** Error: (vsim-PLI-3781) acc_fetch_value(): The object parameter 'vif' is a SystemVerilog type, which is not handled.    : UNKNOWN(-1)
+#    Time: 10 ns  Iteration: 1  Instance: /uvm_root
+# ** Error: (vsim-PLI-3781) acc_fetch_value(): The object parameter 'vif' is a SystemVerilog type, which is not handled.    : UNKNOWN(-1)
+#    Time: 10 ns  Iteration: 1  Instance: /uvm_root
+# ** Error: (vsim-PLI-3781) acc_fetch_value(): The object parameter 'vif' is a SystemVerilog type, which is not handled.    : UNKNOWN(-1)
+#    Time: 10 ns  Iteration: 1  Instance: /uvm_root
+# ---------------------Driver in SETUP State @15---------------------
 # PSELx = 1
 # PENABLE = 0
 # PWRITE= 1
 # PADDR = 103
 # PWDATA = 128
 # PSTRB = 1
-# --------------------------------Active monitor @15--------------------------------
-# PSELx:	1
-# PENABLE:	1
-# PWRITE:	1
-# PADDR:	103
-# PWDATA:	128
-# PSTRB:	0001
-# -------------------------Scoreboard @ 15-------------------------
-# Scoreboard writing 80 data into memory at address 67
+# Design in IDLE
+# Design in SETUP psel=1 | penable =0
+# ---------------------Driver in ACCESS State @25---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 103
+# PWDATA = 128
+# PSTRB = 1
+# Design in SETUP psel=1 | penable =1
 # --------------------------------Active monitor @25--------------------------------
 # PSELx:	1
 # PENABLE:	1
 # PWRITE:	1
 # PADDR:	103
 # PWDATA:	128
-# PSTRB:	0001
+# PSTRB:	1
 # -------------------------Scoreboard @ 25-------------------------
-# Scoreboard writing 80 data into memory at address 67
-# ---------------------Driver in IDLE State @25---------------------
+# Scoreboard writing 128 data into memory at address 103
+# Design in ACCESS
+# Writing in Design paddr:103 pwdata:128
+# -------------------------------- Passive monitor @35--------------------------------
+# PRDATA:	0
+# PREADY:	1
+# PSLVERR:	0
+# PRDATA = 0
+# ---------------------Driver in IDLE State @35---------------------
 # PSELx = 1
-# ---------------------Driver in SETUP State @35---------------------
-# PSELx = 0
+# Design in ACCESS
+# Writing in Design paddr:103 pwdata:128
+# Design in IDLE
+# ---------------------Driver in SETUP State @45---------------------
+# PSELx = 1
 # PENABLE = 1
-# PADDR = 103
-# PWDATA = 128
-# PSTRB = 1
-# --------------------------------Active monitor @35--------------------------------
-# PSELx:	0
-# PENABLE:	1
-# PWRITE:	1
-# PADDR:	103
-# PWDATA:	128
-# PSTRB:	0001
-# ---------------------Driver in ACCESS State @45---------------------
-# PSELx = 1
-# PENABLE = 0
 # PWRITE= 0
 # PADDR = 103
-# PWDATA = 128
 # PSTRB = 1
-# --------------------------------Active monitor @45--------------------------------
-# PSELx:	1
-# PENABLE:	1
-# PWRITE:	0
-# PADDR:	103
-# PWDATA:	128
-# PSTRB:	0001
-# -------------------------------- Passive monitor @45--------------------------------
-# PRDATA:	0
-# PREADY:	0
-# PSLVERR:	0
-# Field	 Expected	 Actual0                                                                             0
-# PRDATA	 0	 0
-# Data matches
-# -------------------------------- Passive monitor @55--------------------------------
-# PRDATA:	0
-# PREADY:	0
-# PSLVERR:	0
+# Design in IDLE
+# Design in SETUP psel=1 | penable =0
+# ---------------------Driver in ACCESS State @55---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 103
+# PWDATA = 198
+# PSTRB = 1
+# Design in SETUP psel=1 | penable =1
 # --------------------------------Active monitor @55--------------------------------
 # PSELx:	1
 # PENABLE:	1
 # PWRITE:	0
 # PADDR:	103
-# PWDATA:	128
-# PSTRB:	0001
-# Field	 Expected	 Actual0                                                                             0
-# PRDATA	 0	 0
-# Data matches
-# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 55: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
-# UVM_INFO apb_slv_subscriber.sv(79) @ 55: uvm_test_top.env.subscr [apb_slv_subscriber] [Input]: Coverage --> 37.06
-# UVM_INFO apb_slv_subscriber.sv(80) @ 55: uvm_test_top.env.subscr [apb_slv_subscriber] [Output]: Coverage --> 66.67
+# PSTRB:	1
+# Design in ACCESS
+# Reading in Design paddr:103 pwdata:128
+# -------------------------------- Passive monitor @65--------------------------------
+# PRDATA:	128
+# PREADY:	1
+# PSLVERR:	0
+# PRDATA = 128
+# -------------------------Scoreboard @ 65-------------------------
+# Field		 Expected	 Actual
+# PRDATA	     0		 128
+# Data doesn't match
+#######################################
+# ---------------------Driver in IDLE State @65---------------------
+# PSELx = 1
+# Design in ACCESS
+# Reading in Design paddr:103 pwdata:128
+# Design in IDLE
+# ---------------------Driver in SETUP State @75---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 1
+# PADDR = 127
+# PWDATA = 160
+# PSTRB = 1
+# Design in IDLE
+# Design in SETUP psel=1 | penable =0
+# ---------------------Driver in ACCESS State @85---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 127
+# PWDATA = 160
+# PSTRB = 1
+# Design in SETUP psel=1 | penable =1
+# --------------------------------Active monitor @85--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	127
+# PWDATA:	160
+# PSTRB:	1
+# -------------------------Scoreboard @ 85-------------------------
+# Scoreboard writing 160 data into memory at address 127
+# Design in ACCESS
+# Writing in Design paddr:127 pwdata:160
+# -------------------------------- Passive monitor @95--------------------------------
+# PRDATA:	0
+# PREADY:	1
+# PSLVERR:	0
+# PRDATA = 0
+# ---------------------Driver in IDLE State @95---------------------
+# PSELx = 1
+# Design in ACCESS
+# Writing in Design paddr:127 pwdata:160
+# Design in IDLE
+# ---------------------Driver in SETUP State @105---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 127
+# PSTRB = 1
+# Design in IDLE
+# Design in SETUP psel=1 | penable =0
+# ---------------------Driver in ACCESS State @115---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 127
+# PWDATA = 56
+# PSTRB = 1
+# Design in SETUP psel=1 | penable =1
+# --------------------------------Active monitor @115--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	127
+# PSTRB:	1
+# Design in ACCESS
+# Reading in Design paddr:127 pwdata:160
+# -------------------------------- Passive monitor @125--------------------------------
+# PRDATA:	160
+# PREADY:	1
+# PSLVERR:	0
+# PRDATA = 160
+# -------------------------Scoreboard @ 125-------------------------
+# Field		 Expected	 Actual
+# PRDATA	     0		 160
+# Data doesn't match
+#######################################
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 125: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO apb_slv_subscriber.sv(82) @ 125: uvm_test_top.env.subscr [apb_slv_subscriber] [Input]: Coverage --> 36.61
+# UVM_INFO apb_slv_subscriber.sv(83) @ 125: uvm_test_top.env.subscr [apb_slv_subscriber] [Output]: Coverage --> 34.90
 # 
 # --- UVM Report Summary ---
 # 
@@ -213,6 +252,6 @@
 # [TEST_DONE]     1
 # [apb_slv_subscriber]     2
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 55 ns  Iteration: 62  Instance: /top
-# End time: 01:30:04 on Dec 02,2025, Elapsed time: 0:00:03
-# Errors: 0, Warnings: 19
+#    Time: 125 ns  Iteration: 65  Instance: /top
+# End time: 15:35:10 on Dec 03,2025, Elapsed time: 0:00:03
+# Errors: 3, Warnings: 0
