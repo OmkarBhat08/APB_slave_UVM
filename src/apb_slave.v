@@ -14,12 +14,12 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 32)(
 
   parameter N = 4;  // Number of wait states
 
-	integer index;
+	reg [$clog2(`DATA_WIDTH):0] index;
 	reg [`DATA_WIDTH-1:0] mask;
 	integer i, j;
 
   reg [DATA_WIDTH-1:0] mem [0:(2**ADDR_WIDTH)-1]; // 8x8-bit memory
-  reg [2:0] wait_counter;  // Counter for wait states
+  reg [1:0] wait_counter;  // Counter for wait states
   reg transaction_active = 0;  //  indicate an active transaction
 
   always @(posedge PCLK or negedge PRESETn) 
@@ -29,6 +29,7 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 32)(
       PREADY  <= 0;
       PSLVERR <= 0;
       PRDATA  <= 0;
+			$display("\n\nIn reset");
       transaction_active <= 0;
       wait_counter <= 0;
       for (i = 0; i < 2**ADDR_WIDTH; i = i + 1) 
@@ -63,7 +64,7 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 32)(
 							index = 0;
 							for(i=0; i<(DATA_WIDTH/8); i=i+1) //For each strobe bit
 							begin
-								for(j=0; j<8;j=j+1)// for each byte
+								for(j=0; j<=7;j=j+1)// for each byte
 								begin
 									if((PSTRB>>i)&'d1)
 										mask[index] = 1;	

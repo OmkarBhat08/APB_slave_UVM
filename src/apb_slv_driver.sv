@@ -37,6 +37,14 @@ class apb_slv_driver extends uvm_driver #(apb_slv_seq_item);
 		prev_transaction.PSELx = req.PSELx;	
 
 		wait(vif.PREADY == 1);
+		// End of transaction
+		@(posedge vif.driver_cb);
+		vif.PSELx <= 0;
+		vif.PENABLE <=0;
+		$display("---------------------Driver End of transaction @%0t---------------------", $time);
+		$display("PSELx = 0");
+		$display("PENABLE = 0");
+		
 	endtask : drive
 
 	virtual task idle_state_drive();

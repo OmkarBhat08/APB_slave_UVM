@@ -1,0 +1,21 @@
+QuestaSim vlog 10.6c Compiler 2017.07 Jul 25 2017
+Start time: 19:43:38 on Dec 04,2025
+vlog -sv "+acc" "+cover" "+fcover" -l apb_slv_log.log apb_slv_pkg.sv top.sv 
+** Note: (vlog-2286) apb_slv_pkg.sv(1): Using implicit +incdir+/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling package apb_slv_pkg
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Compiling interface apb_slv_interfs
+** Warning: ** while parsing file included at top.sv(3)
+** at apb_slv_pkg.sv(3): (vlog-2275) 'apb_slv_pkg' already exists and will be overwritten.
+-- Compiling package apb_slv_pkg
+-- Compiling module apb_slave
+-- Compiling program apb_slv_assertions
+-- Compiling package top_sv_unit
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Importing package apb_slv_pkg
+-- Compiling module top
+
+Top level modules:
+	top
+End time: 19:43:38 on Dec 04,2025, Elapsed time: 0:00:00
+Errors: 0, Warnings: 1

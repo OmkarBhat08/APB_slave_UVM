@@ -1,7 +1,8 @@
 # --- UVM Variables ---
 FILE ?= top.sv
 TOP  ?= top
-test ?= apb_slv_write_read_test  # Default test name, can be overridden from the command line
+test ?= apb_slv_regression_test  # Default test name, can be overridden from the command line
+#test ?= apb_slv_write_read_test  # Default test name, can be overridden from the command line
 
 # --- Coverage Variables ---
 COV_LOG_FILE   ?= apb_slv_log.log
@@ -50,7 +51,7 @@ simulate: compile
 
 # --- Coverage Targets ---
 cov: 
-	@vlog -sv +acc +cover +fcover -l $(COV_LOG_FILE) evm_pkg.sv $(FILE)
+	@vlog -sv +acc +cover +fcover -l $(COV_LOG_FILE) apb_slv_pkg.sv $(FILE)
 	@vsim -vopt work.$(TOP) -voptargs=+acc=npr -assertdebug -l simulation.log -coverage $(VSIM_EXTRA_OPTS) -c -do "do exclusion.do; coverage save -onexit -assert -directive -cvg -codeAll $(COV_DB_FILE); run -all; exit"
 	@vcover report -html $(COV_DB_FILE) -htmldir $(COV_REPORT_DIR) -details
 

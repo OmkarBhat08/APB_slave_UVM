@@ -50,6 +50,8 @@ module top();
 		uvm_config_db#(virtual apb_slv_interfs)::set(null,"*","vif",interfs);
 		PRESETn = 0;
 		#10 PRESETn = 1;
+		#330 PRESETn = 0;
+		#10 PRESETn = 1;
 	end
 
 	initial
@@ -57,4 +59,5 @@ module top();
 		run_test("apb_slv_write_read_test");
 		$finish;
 	end
-							endmodule : top
+
+endmodule : top

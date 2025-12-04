@@ -76,10 +76,20 @@ class apb_slv_scoreboard extends uvm_component;
 						$display("PSLVERR\t     %0d\t\t %0d", PSLVERR, output_packet.PSLVERR);
 						$display("PREADY\t     1\t\t %0d", output_packet.PREADY);
 
-						if((mem[input_packet.PADDR] == output_packet.PRDATA) && (PSLVERR == output_packet.PSLVERR))
-							$display("********************************************TEST PASSED********************************************");
+						if(output_packet.PSLVERR)
+						begin
+							if(PSLVERR == output_packet.PSLVERR)
+								$display("********************************************TEST PASSED********************************************");
+							else
+								$display("********************************************TEST FAILED********************************************");
+						end
 						else
-							$display("********************************************TEST FAILED********************************************");
+						begin
+							if((mem[input_packet.PADDR] == output_packet.PRDATA) && (PSLVERR == output_packet.PSLVERR))
+								$display("********************************************TEST PASSED********************************************");
+							else
+								$display("********************************************TEST FAILED********************************************");
+						end
 					end
 				end
 			join

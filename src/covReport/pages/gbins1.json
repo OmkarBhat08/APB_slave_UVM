@@ -1,0 +1,26 @@
+var g_data = {
+c1251:[4,'PSELX',[],,'1250',1,1,'input_cov','1245','/apb_slv_pkg/apb_slv_subscriber',[[],[0,'1','0',1,'deasserted'],[0,'1','203',,'asserted']],[]],
+c1252:[4,'PENABLE',[],,'1250',1,1,'input_cov','1245','/apb_slv_pkg/apb_slv_subscriber',[[],[0,'1','0',1,'deasserted'],[0,'1','203',,'asserted']],[]],
+c1253:[4,'PWRITE',[],,'1250',1,1,'input_cov','1245','/apb_slv_pkg/apb_slv_subscriber',[[],[0,'1','102',,'deasserted'],[0,'1','101',,'asserted']],[]],
+c1254:[4,'PADDR',[],,'1250',1,1,'input_cov','1245','/apb_slv_pkg/apb_slv_subscriber',[[],[0,'1','8',,'PADDR_range0'],[0,'1','36',,'PADDR_range1'],[0,'1','156',,'PADDR_range2'],[0,'1','3',,'PADDR_invalid_range']],[]],
+c1255:[4,'PWDATA',[],,'1250',1,1,'input_cov','1245','/apb_slv_pkg/apb_slv_subscriber',[[],[0,'1','1',,'PWDATA_range0'],[0,'1','1',,'PWDATA_range1'],[0,'1','1',,'PWDATA_range2'],[0,'1','1',,'PWDATA_range3']],[]],
+c1256:[4,'PSTRB',[],,'1250',1,1,'input_cov','1245','/apb_slv_pkg/apb_slv_subscriber',[[],[0,'1','50',,'deasserted'],[0,'1','44',,'asserted']],[]],
+c1257:[5,'PADDRxPWDATA',['PADDR','PWDATA'],,'1250',1,1,'input_cov','1245','/apb_slv_pkg/apb_slv_subscriber',[[],[4,'1','1',,'PADDR_invalid_range','PWDATA_range0'],[4,'1','1',,'PADDR_invalid_range','PWDATA_range1'],[4,'1','1',,'PADDR_invalid_range','PWDATA_range2'],[4,'1','1',,'PADDR_invalid_range','PWDATA_range3']],[[],[4,'1','0',1,'PADDR_range0','PWDATA_range0'],[4,'1','0',1,'PADDR_range1','PWDATA_range0'],[4,'1','0',1,'PADDR_range2','PWDATA_range0'],[4,'1','0',1,'PADDR_range0','PWDATA_range1'],[4,'1','0',1,'PADDR_range1','PWDATA_range1'],[4,'1','0',1,'PADDR_range2','PWDATA_range1']
+,[4,'1','0',1,'PADDR_range0','PWDATA_range2'],[4,'1','0',1,'PADDR_range1','PWDATA_range2'],[4,'1','0',1,'PADDR_range2','PWDATA_range2'],[4,'1','0',1,'PADDR_range0','PWDATA_range3'],[4,'1','0',1,'PADDR_range1','PWDATA_range3'],[4,'1','0',1,'PADDR_range2','PWDATA_range3']]],
+c1259:[4,'PREADY',[],,'1258',1,1,'output_cov','1245','/apb_slv_pkg/apb_slv_subscriber',[[],[0,'1','0',1,'deasserted'],[0,'1','203',,'asserted']],[]],
+c1260:[4,'PSLVERR',[],,'1258',1,1,'output_cov','1245','/apb_slv_pkg/apb_slv_subscriber',[[],[0,'1','201',,'deasserted'],[0,'1','2',,'asserted']],[]],
+c1261:[4,'PRDATA',[],,'1258',1,1,'output_cov','1245','/apb_slv_pkg/apb_slv_subscriber',[[],[0,'1','44',,'PRDATA_range0'],[0,'1','46',,'PRDATA_range1'],[0,'1','48',,'PRDATA_range2'],[0,'1','44',,'PRDATA_range3']],[]],
+c1611:[4,'PSELX',[],,'1610',1,1,'input_cov','1605','work.apb_slv_pkg::apb_slv_subscriber',[[],[0,'1','0',1,'deasserted'],[0,'1','203',,'asserted']],[]],
+c1612:[4,'PENABLE',[],,'1610',1,1,'input_cov','1605','work.apb_slv_pkg::apb_slv_subscriber',[[],[0,'1','0',1,'deasserted'],[0,'1','203',,'asserted']],[]],
+c1613:[4,'PWRITE',[],,'1610',1,1,'input_cov','1605','work.apb_slv_pkg::apb_slv_subscriber',[[],[0,'1','102',,'deasserted'],[0,'1','101',,'asserted']],[]],
+c1614:[4,'PADDR',[],,'1610',1,1,'input_cov','1605','work.apb_slv_pkg::apb_slv_subscriber',[[],[0,'1','8',,'PADDR_range0'],[0,'1','36',,'PADDR_range1'],[0,'1','156',,'PADDR_range2'],[0,'1','3',,'PADDR_invalid_range']],[]],
+c1615:[4,'PWDATA',[],,'1610',1,1,'input_cov','1605','work.apb_slv_pkg::apb_slv_subscriber',[[],[0,'1','1',,'PWDATA_range0'],[0,'1','1',,'PWDATA_range1'],[0,'1','1',,'PWDATA_range2'],[0,'1','1',,'PWDATA_range3']],[]],
+c1616:[4,'PSTRB',[],,'1610',1,1,'input_cov','1605','work.apb_slv_pkg::apb_slv_subscriber',[[],[0,'1','50',,'deasserted'],[0,'1','44',,'asserted']],[]],
+c1617:[5,'PADDRxPWDATA',['PADDR','PWDATA'],,'1610',1,1,'input_cov','1605','work.apb_slv_pkg::apb_slv_subscriber',[[],[4,'1','1',,'PADDR_invalid_range','PWDATA_range0'],[4,'1','1',,'PADDR_invalid_range','PWDATA_range1'],[4,'1','1',,'PADDR_invalid_range','PWDATA_range2'],[4,'1','1',,'PADDR_invalid_range','PWDATA_range3']],[[],[4,'1','0',1,'PADDR_range0','PWDATA_range0'],[4,'1','0',1,'PADDR_range1','PWDATA_range0'],[4,'1','0',1,'PADDR_range2','PWDATA_range0'],[4,'1','0',1,'PADDR_range0','PWDATA_range1'],[4,'1','0',1,'PADDR_range1','PWDATA_range1'],[4,'1','0',1,'PADDR_range2','PWDATA_range1']
+,[4,'1','0',1,'PADDR_range0','PWDATA_range2'],[4,'1','0',1,'PADDR_range1','PWDATA_range2'],[4,'1','0',1,'PADDR_range2','PWDATA_range2'],[4,'1','0',1,'PADDR_range0','PWDATA_range3'],[4,'1','0',1,'PADDR_range1','PWDATA_range3'],[4,'1','0',1,'PADDR_range2','PWDATA_range3']]],
+c1619:[4,'PREADY',[],,'1618',1,1,'output_cov','1605','work.apb_slv_pkg::apb_slv_subscriber',[[],[0,'1','0',1,'deasserted'],[0,'1','203',,'asserted']],[]],
+c1620:[4,'PSLVERR',[],,'1618',1,1,'output_cov','1605','work.apb_slv_pkg::apb_slv_subscriber',[[],[0,'1','201',,'deasserted'],[0,'1','2',,'asserted']],[]],
+c1621:[4,'PRDATA',[],,'1618',1,1,'output_cov','1605','work.apb_slv_pkg::apb_slv_subscriber',[[],[0,'1','44',,'PRDATA_range0'],[0,'1','46',,'PRDATA_range1'],[0,'1','48',,'PRDATA_range2'],[0,'1','44',,'PRDATA_range3']],[]],
+dummyEnd:0
+};
+processCovergroupsData(g_data);

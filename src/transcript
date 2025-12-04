@@ -1,6 +1,6 @@
-# vsim -c top "+UVM_TESTNAME=apb_slv_write_read_test" -do "run -all ; quit" 
-# Start time: 09:46:12 on Dec 04,2025
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# vsim -c top "+UVM_TESTNAME=apb_slv_regression_test" -do "run -all ; quit" 
+# Start time: 18:34:06 on Dec 04,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
 # //  Questa Sim
 # //  Version 10.6c linux Jul 25 2017
 # //
@@ -51,11 +51,14 @@
 # 
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
-# UVM_INFO @ 0: reporter [RNTST] Running test apb_slv_write_read_test...
+# UVM_INFO @ 0: reporter [RNTST] Running test apb_slv_regression_test...
+# 
+# 
+# In reset
 # --------------------------------------------------------------------
 # Name                       Type                          Size  Value
 # --------------------------------------------------------------------
-# uvm_test_top               apb_slv_write_read_test       -     @471 
+# uvm_test_top               apb_slv_regression_test       -     @471 
 #   env                      apb_slv_env                   -     @478 
 #     act_agnt               apb_slv_active_agent          -     @485 
 #       act_mon              apb_slv_active_monitor        -     @694 
@@ -80,135 +83,977 @@
 #       aport_inputs         uvm_analysis_imp_from_inp     -     @506 
 #       aport_outputs        uvm_analysis_imp_from_out     -     @514 
 # --------------------------------------------------------------------
-#####################################################################################################
+# 
+# 
+# In reset
 # ---------------------Driver in IDLE State @5---------------------
 # PSELx = 0
 # PENABLE = 0
+# ASSERTION PASS: Reset assertion passed
 # ---------------------Driver in SETUP State @15---------------------
 # PSELx = 1
 # PENABLE = 0
-# PWRITE= 1
-# PADDR = 67
-# PWDATA = e88b
-# PSTRB = 0
+# PWRITE= 0
+# PADDR = 7f
+# PSTRB = 2
 # ---------------------Driver in ACCESS State @25---------------------
 # PSELx = 1
 # PENABLE = 1
-# PWRITE= 1
-# PADDR = 67
-# PWDATA = e88b
-# PSTRB = 0
+# PWRITE= 0
+# PADDR = 7f
+# PWDATA = f709
+# PSTRB = 2
 # --------------------------------Active monitor @25--------------------------------
 # PSELx:	1
 # PENABLE:	1
-# PWRITE:	1
-# PADDR:	67
-# PWDATA:	e88b
-# PSTRB:	00
-# -------------------------Scoreboard @ 25-------------------------
-# Scoreboard writing 0  data into memory at address 67
+# PWRITE:	0
+# PADDR:	7f
+# PSTRB:	10
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
 # -------------------------------- Passive monitor @75--------------------------------
 # PRDATA:	0
 # PREADY:	1
 # PSLVERR:	0
-# ---------------------Driver in IDLE State @75---------------------
-# PSELx = 0
-# PENABLE = 0
-# ---------------------Driver in SETUP State @75---------------------
-# PSELx = 1
-# PENABLE = 1
-# PWRITE= 0
-# PADDR = 67
-# PSTRB = 1
-# ---------------------Driver in ACCESS State @85---------------------
-# PSELx = 1
-# PENABLE = 1
-# PWRITE= 0
-# PADDR = 67
-# PWDATA = edf9
-# PSTRB = 1
-# --------------------------------Active monitor @85--------------------------------
-# PSELx:	1
-# PENABLE:	1
-# PWRITE:	0
-# PADDR:	67
-# PSTRB:	01
-# -------------------------------- Passive monitor @135--------------------------------
-# PRDATA:	0
-# PREADY:	1
-# PSLVERR:	0
-# -------------------------Scoreboard @ 135-------------------------
+# -------------------------Scoreboard @ 75-------------------------
 # Field		 Expected	Actual
 # PRDATA	 0		0
 # PSLVERR	     0		 0
 # PREADY	     1		 1
 # ********************************************TEST PASSED********************************************
-#####################################################################################################
-# ---------------------Driver in IDLE State @135---------------------
+# ---------------------Driver End of transaction @75---------------------
 # PSELx = 0
 # PENABLE = 0
-# ---------------------Driver in SETUP State @135---------------------
+#####################################################################################################
+# ---------------------Driver in IDLE State @75---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @85---------------------
 # PSELx = 1
 # PENABLE = 0
 # PWRITE= 1
-# PADDR = 7f
-# PWDATA = c81d
-# PSTRB = 1
-# ---------------------Driver in ACCESS State @145---------------------
+# PADDR = 2a
+# PWDATA = a1dc
+# PSTRB = 2
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @95---------------------
 # PSELx = 1
 # PENABLE = 1
 # PWRITE= 1
-# PADDR = 7f
-# PWDATA = c81d
-# PSTRB = 1
-# --------------------------------Active monitor @145--------------------------------
+# PADDR = 2a
+# PWDATA = a1dc
+# PSTRB = 2
+# --------------------------------Active monitor @95--------------------------------
 # PSELx:	1
 # PENABLE:	1
 # PWRITE:	1
-# PADDR:	7f
-# PWDATA:	c81d
-# PSTRB:	01
-# -------------------------Scoreboard @ 145-------------------------
-# Scoreboard writing 1d  data into memory at address 7f
-# -------------------------------- Passive monitor @195--------------------------------
+# PADDR:	2a
+# PWDATA:	a1dc
+# PSTRB:	10
+# -------------------------Scoreboard @ 95-------------------------
+# Scoreboard writing a100  data into memory at address 2a
+# ASSERTION PASS: PRDATA latched when PWRITE is 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @145--------------------------------
 # PRDATA:	0
 # PREADY:	1
 # PSLVERR:	0
-# ---------------------Driver in IDLE State @195---------------------
+# ---------------------Driver End of transaction @145---------------------
 # PSELx = 0
 # PENABLE = 0
-# ---------------------Driver in SETUP State @195---------------------
+# ---------------------Driver in IDLE State @145---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @155---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 0
+# PADDR = 2a
+# PSTRB = 2
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @165---------------------
 # PSELx = 1
 # PENABLE = 1
 # PWRITE= 0
-# PADDR = 7f
-# PSTRB = 0
-# ---------------------Driver in ACCESS State @205---------------------
-# PSELx = 1
-# PENABLE = 1
-# PWRITE= 0
-# PADDR = 7f
-# PWDATA = fa44
-# PSTRB = 0
-# --------------------------------Active monitor @205--------------------------------
+# PADDR = 2a
+# PWDATA = cf2f
+# PSTRB = 2
+# --------------------------------Active monitor @165--------------------------------
 # PSELx:	1
 # PENABLE:	1
 # PWRITE:	0
-# PADDR:	7f
-# PSTRB:	00
-# -------------------------------- Passive monitor @255--------------------------------
-# PRDATA:	1d
+# PADDR:	2a
+# PSTRB:	10
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @215--------------------------------
+# PRDATA:	a100
 # PREADY:	1
 # PSLVERR:	0
-# -------------------------Scoreboard @ 255-------------------------
+# -------------------------Scoreboard @ 215-------------------------
 # Field		 Expected	Actual
-# PRDATA	 1d		1d
+# PRDATA	 a100		a100
 # PSLVERR	     0		 0
 # PREADY	     1		 1
 # ********************************************TEST PASSED********************************************
-# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 255: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
-# UVM_INFO apb_slv_subscriber.sv(70) @ 255: uvm_test_top.env.subscr [apb_slv_subscriber] [Input]: Coverage --> 39.29
-# UVM_INFO apb_slv_subscriber.sv(71) @ 255: uvm_test_top.env.subscr [apb_slv_subscriber] [Output]: Coverage --> 66.67
+# ---------------------Driver End of transaction @215---------------------
+# PSELx = 0
+# PENABLE = 0
+#####################################################################################################
+# ---------------------Driver in IDLE State @215---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @225---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 1
+# PADDR = 2b
+# PWDATA = 79c8
+# PSTRB = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @235---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 2b
+# PWDATA = 79c8
+# PSTRB = 0
+# --------------------------------Active monitor @235--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	2b
+# PWDATA:	79c8
+# PSTRB:	00
+# -------------------------Scoreboard @ 235-------------------------
+# Scoreboard writing 0  data into memory at address 2b
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @285--------------------------------
+# PRDATA:	a100
+# PREADY:	1
+# PSLVERR:	0
+# ---------------------Driver End of transaction @285---------------------
+# PSELx = 0
+# PENABLE = 0
+# ---------------------Driver in IDLE State @285---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @295---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 0
+# PADDR = 2b
+# PSTRB = 3
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @305---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 2b
+# PWDATA = 38f2
+# PSTRB = 3
+# --------------------------------Active monitor @305--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	2b
+# PSTRB:	11
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# 
+# 
+# In reset
+# 
+# 
+# In reset
+# ASSERTION FAIL: Reset assertion failed
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @395--------------------------------
+# PRDATA:	0
+# PREADY:	1
+# PSLVERR:	0
+# -------------------------Scoreboard @ 395-------------------------
+# Field		 Expected	Actual
+# PRDATA	 0		0
+# PSLVERR	     0		 0
+# PREADY	     1		 1
+# ********************************************TEST PASSED********************************************
+# ---------------------Driver End of transaction @395---------------------
+# PSELx = 0
+# PENABLE = 0
+#####################################################################################################
+# ---------------------Driver in IDLE State @395---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @405---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 1
+# PADDR = 34
+# PWDATA = 8577
+# PSTRB = 1
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @415---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 34
+# PWDATA = 8577
+# PSTRB = 1
+# --------------------------------Active monitor @415--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	34
+# PWDATA:	8577
+# PSTRB:	01
+# -------------------------Scoreboard @ 415-------------------------
+# Scoreboard writing 77  data into memory at address 34
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @465--------------------------------
+# PRDATA:	0
+# PREADY:	1
+# PSLVERR:	0
+# ---------------------Driver End of transaction @465---------------------
+# PSELx = 0
+# PENABLE = 0
+# ---------------------Driver in IDLE State @465---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @475---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 34
+# PSTRB = 3
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @485---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 34
+# PWDATA = f4f0
+# PSTRB = 3
+# --------------------------------Active monitor @485--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	34
+# PSTRB:	11
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @535--------------------------------
+# PRDATA:	77
+# PREADY:	1
+# PSLVERR:	0
+# -------------------------Scoreboard @ 535-------------------------
+# Field		 Expected	Actual
+# PRDATA	 77		77
+# PSLVERR	     0		 0
+# PREADY	     1		 1
+# ********************************************TEST PASSED********************************************
+# ---------------------Driver End of transaction @535---------------------
+# PSELx = 0
+# PENABLE = 0
+#####################################################################################################
+# ---------------------Driver in IDLE State @535---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @545---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 1
+# PADDR = 1a
+# PWDATA = 7bf3
+# PSTRB = 3
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @555---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 1a
+# PWDATA = 7bf3
+# PSTRB = 3
+# --------------------------------Active monitor @555--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	1a
+# PWDATA:	7bf3
+# PSTRB:	11
+# -------------------------Scoreboard @ 555-------------------------
+# Scoreboard writing 7bf3  data into memory at address 1a
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @605--------------------------------
+# PRDATA:	77
+# PREADY:	1
+# PSLVERR:	0
+# ---------------------Driver End of transaction @605---------------------
+# PSELx = 0
+# PENABLE = 0
+# ---------------------Driver in IDLE State @605---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @615---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 1a
+# PSTRB = 3
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @625---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 1a
+# PWDATA = 8435
+# PSTRB = 3
+# --------------------------------Active monitor @625--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	1a
+# PSTRB:	11
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @675--------------------------------
+# PRDATA:	7bf3
+# PREADY:	1
+# PSLVERR:	0
+# -------------------------Scoreboard @ 675-------------------------
+# Field		 Expected	Actual
+# PRDATA	 7bf3		7bf3
+# PSLVERR	     0		 0
+# PREADY	     1		 1
+# ********************************************TEST PASSED********************************************
+# ---------------------Driver End of transaction @675---------------------
+# PSELx = 0
+# PENABLE = 0
+#####################################################################################################
+# ---------------------Driver in IDLE State @675---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @685---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 38
+# PWDATA = 414a
+# PSTRB = 2
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @695---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 38
+# PWDATA = 414a
+# PSTRB = 2
+# --------------------------------Active monitor @695--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	38
+# PWDATA:	414a
+# PSTRB:	10
+# -------------------------Scoreboard @ 695-------------------------
+# Scoreboard writing 4100  data into memory at address 38
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @745--------------------------------
+# PRDATA:	7bf3
+# PREADY:	1
+# PSLVERR:	0
+# ---------------------Driver End of transaction @745---------------------
+# PSELx = 0
+# PENABLE = 0
+# ---------------------Driver in IDLE State @745---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @755---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 0
+# PADDR = 38
+# PSTRB = 1
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @765---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 38
+# PWDATA = a7c7
+# PSTRB = 1
+# --------------------------------Active monitor @765--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	38
+# PSTRB:	01
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @815--------------------------------
+# PRDATA:	4100
+# PREADY:	1
+# PSLVERR:	0
+# -------------------------Scoreboard @ 815-------------------------
+# Field		 Expected	Actual
+# PRDATA	 4100		4100
+# PSLVERR	     0		 0
+# PREADY	     1		 1
+# ********************************************TEST PASSED********************************************
+# ---------------------Driver End of transaction @815---------------------
+# PSELx = 0
+# PENABLE = 0
+#####################################################################################################
+# ---------------------Driver in IDLE State @815---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @825---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 1
+# PADDR = 35
+# PWDATA = ae08
+# PSTRB = 2
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @835---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 35
+# PWDATA = ae08
+# PSTRB = 2
+# --------------------------------Active monitor @835--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	35
+# PWDATA:	ae08
+# PSTRB:	10
+# -------------------------Scoreboard @ 835-------------------------
+# Scoreboard writing ae00  data into memory at address 35
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @885--------------------------------
+# PRDATA:	4100
+# PREADY:	1
+# PSLVERR:	0
+# ---------------------Driver End of transaction @885---------------------
+# PSELx = 0
+# PENABLE = 0
+# ---------------------Driver in IDLE State @885---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @895---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 0
+# PADDR = 35
+# PSTRB = 3
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @905---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 35
+# PWDATA = 1897
+# PSTRB = 3
+# --------------------------------Active monitor @905--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	35
+# PSTRB:	11
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @955--------------------------------
+# PRDATA:	ae00
+# PREADY:	1
+# PSLVERR:	0
+# -------------------------Scoreboard @ 955-------------------------
+# Field		 Expected	Actual
+# PRDATA	 ae00		ae00
+# PSLVERR	     0		 0
+# PREADY	     1		 1
+# ********************************************TEST PASSED********************************************
+# ---------------------Driver End of transaction @955---------------------
+# PSELx = 0
+# PENABLE = 0
+#####################################################################################################
+# ---------------------Driver in IDLE State @955---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @965---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 1
+# PADDR = 4
+# PWDATA = df2d
+# PSTRB = 1
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @975---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 4
+# PWDATA = df2d
+# PSTRB = 1
+# --------------------------------Active monitor @975--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	4
+# PWDATA:	df2d
+# PSTRB:	01
+# -------------------------Scoreboard @ 975-------------------------
+# Scoreboard writing 2d  data into memory at address 4
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @1025--------------------------------
+# PRDATA:	ae00
+# PREADY:	1
+# PSLVERR:	0
+# ---------------------Driver End of transaction @1025---------------------
+# PSELx = 0
+# PENABLE = 0
+# ---------------------Driver in IDLE State @1025---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @1035---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 4
+# PSTRB = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @1045---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 4
+# PWDATA = 5c88
+# PSTRB = 0
+# --------------------------------Active monitor @1045--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	4
+# PSTRB:	00
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @1095--------------------------------
+# PRDATA:	2d
+# PREADY:	1
+# PSLVERR:	0
+# -------------------------Scoreboard @ 1095-------------------------
+# Field		 Expected	Actual
+# PRDATA	 2d		2d
+# PSLVERR	     0		 0
+# PREADY	     1		 1
+# ********************************************TEST PASSED********************************************
+# ---------------------Driver End of transaction @1095---------------------
+# PSELx = 0
+# PENABLE = 0
+#####################################################################################################
+# ---------------------Driver in IDLE State @1095---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @1105---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 1
+# PADDR = 5
+# PWDATA = 4d63
+# PSTRB = 3
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @1115---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 5
+# PWDATA = 4d63
+# PSTRB = 3
+# --------------------------------Active monitor @1115--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	5
+# PWDATA:	4d63
+# PSTRB:	11
+# -------------------------Scoreboard @ 1115-------------------------
+# Scoreboard writing 4d63  data into memory at address 5
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @1165--------------------------------
+# PRDATA:	2d
+# PREADY:	1
+# PSLVERR:	0
+# ---------------------Driver End of transaction @1165---------------------
+# PSELx = 0
+# PENABLE = 0
+# ---------------------Driver in IDLE State @1165---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @1175---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 0
+# PADDR = 5
+# PSTRB = 1
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @1185---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 5
+# PWDATA = 7f13
+# PSTRB = 1
+# --------------------------------Active monitor @1185--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	5
+# PSTRB:	01
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @1235--------------------------------
+# PRDATA:	4d63
+# PREADY:	1
+# PSLVERR:	0
+# -------------------------Scoreboard @ 1235-------------------------
+# Field		 Expected	Actual
+# PRDATA	 4d63		4d63
+# PSLVERR	     0		 0
+# PREADY	     1		 1
+# ********************************************TEST PASSED********************************************
+# ---------------------Driver End of transaction @1235---------------------
+# PSELx = 0
+# PENABLE = 0
+#####################################################################################################
+# ---------------------Driver in IDLE State @1235---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @1245---------------------
+# PSELx = 1
+# PENABLE = 0
+# PWRITE= 1
+# PADDR = 2
+# PWDATA = 73a7
+# PSTRB = 2
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @1255---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 2
+# PWDATA = 73a7
+# PSTRB = 2
+# --------------------------------Active monitor @1255--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	2
+# PWDATA:	73a7
+# PSTRB:	10
+# -------------------------Scoreboard @ 1255-------------------------
+# Scoreboard writing 7300  data into memory at address 2
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @1305--------------------------------
+# PRDATA:	4d63
+# PREADY:	1
+# PSLVERR:	0
+# ---------------------Driver End of transaction @1305---------------------
+# PSELx = 0
+# PENABLE = 0
+# ---------------------Driver in IDLE State @1305---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @1315---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 2
+# PSTRB = 2
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @1325---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 2
+# PWDATA = 8885
+# PSTRB = 2
+# --------------------------------Active monitor @1325--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	2
+# PSTRB:	10
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @1375--------------------------------
+# PRDATA:	7300
+# PREADY:	1
+# PSLVERR:	0
+# -------------------------Scoreboard @ 1375-------------------------
+# Field		 Expected	Actual
+# PRDATA	 7300		7300
+# PSLVERR	     0		 0
+# PREADY	     1		 1
+# ********************************************TEST PASSED********************************************
+# ---------------------Driver End of transaction @1375---------------------
+# PSELx = 0
+# PENABLE = 0
+#####################################################################################################
+# ---------------------Driver in IDLE State @1375---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @1385---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 13
+# PWDATA = 58b8
+# PSTRB = 2
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @1395---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = 13
+# PWDATA = 58b8
+# PSTRB = 2
+# --------------------------------Active monitor @1395--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	13
+# PWDATA:	58b8
+# PSTRB:	10
+# -------------------------Scoreboard @ 1395-------------------------
+# Scoreboard writing 5800  data into memory at address 13
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @1445--------------------------------
+# PRDATA:	7300
+# PREADY:	1
+# PSLVERR:	0
+# ---------------------Driver End of transaction @1445---------------------
+# PSELx = 0
+# PENABLE = 0
+# ---------------------Driver in IDLE State @1445---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @1455---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 13
+# PSTRB = 1
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @1465---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = 13
+# PWDATA = 6f80
+# PSTRB = 1
+# --------------------------------Active monitor @1465--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	13
+# PSTRB:	01
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @1515--------------------------------
+# PRDATA:	5800
+# PREADY:	1
+# PSLVERR:	0
+# -------------------------Scoreboard @ 1515-------------------------
+# Field		 Expected	Actual
+# PRDATA	 5800		5800
+# PSLVERR	     0		 0
+# PREADY	     1		 1
+# ********************************************TEST PASSED********************************************
+# ---------------------Driver End of transaction @1515---------------------
+# PSELx = 0
+# PENABLE = 0
+#####################################################################################################
+# ---------------------Driver in IDLE State @1515---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @1525---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = e4
+# PWDATA = ef59
+# PSTRB = 2
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @1535---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 1
+# PADDR = e4
+# PWDATA = ef59
+# PSTRB = 2
+# --------------------------------Active monitor @1535--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	1
+# PADDR:	e4
+# PWDATA:	ef59
+# PSTRB:	10
+# -------------------------Scoreboard @ 1535-------------------------
+# Writing to invalid address, will result in PSLVERR
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @1585--------------------------------
+# PRDATA:	5800
+# PREADY:	1
+# PSLVERR:	1
+# ---------------------Driver End of transaction @1585---------------------
+# PSELx = 0
+# PENABLE = 0
+# ---------------------Driver in IDLE State @1585---------------------
+# PSELx = 0
+# PENABLE = 0
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in SETUP State @1595---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = e4
+# PSTRB = 3
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ---------------------Driver in ACCESS State @1605---------------------
+# PSELx = 1
+# PENABLE = 1
+# PWRITE= 0
+# PADDR = e4
+# PWDATA = 8d01
+# PSTRB = 3
+# --------------------------------Active monitor @1605--------------------------------
+# PSELx:	1
+# PENABLE:	1
+# PWRITE:	0
+# PADDR:	e4
+# PSTRB:	11
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: FSM works as intended
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# ASSERTION PASS: Signals are stable throughout the SETUP and ACCESS States
+# -------------------------------- Passive monitor @1655--------------------------------
+# PRDATA:	5800
+# PREADY:	1
+# PSLVERR:	1
+# -------------------------Scoreboard @ 1655-------------------------
+# Field		 Expected	Actual
+# PRDATA	 0		5800
+# PSLVERR	     1		 1
+# PREADY	     1		 1
+# ********************************************TEST PASSED********************************************
+# ---------------------Driver End of transaction @1655---------------------
+# PSELx = 0
+# PENABLE = 0
+#####################################################################################################
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1268) @ 1655: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO apb_slv_subscriber.sv(88) @ 1655: uvm_test_top.env.subscr [apb_slv_subscriber] [Input]: Coverage --> 75.00
+# UVM_INFO apb_slv_subscriber.sv(89) @ 1655: uvm_test_top.env.subscr [apb_slv_subscriber] [Output]: Coverage --> 83.33
 # 
 # --- UVM Report Summary ---
 # 
@@ -223,6 +1068,6 @@
 # [TEST_DONE]     1
 # [apb_slv_subscriber]     2
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 255 ns  Iteration: 62  Instance: /top
-# End time: 09:46:14 on Dec 04,2025, Elapsed time: 0:00:02
+#    Time: 1655 ns  Iteration: 68  Instance: /top
+# End time: 18:34:08 on Dec 04,2025, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 1
