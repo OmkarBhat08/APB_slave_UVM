@@ -1,4 +1,8 @@
-# Exclude the work directory
 /src/work/
+src/covReport/
+
 /src/vsim_stacktrace.vstf
 /src/dump.vcd
+src/apb_slv_log.log
+src/simulation.log
+src/coverage.ucdb
