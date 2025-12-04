@@ -33,9 +33,9 @@ class apb_slv_active_monitor extends uvm_monitor;
 			$display("PSELx:\t%b",monitor_sequence_item.PSELx);
 			$display("PENABLE:\t%b",monitor_sequence_item.PENABLE);
 			$display("PWRITE:\t%b",monitor_sequence_item.PWRITE);
-			$display("PADDR:\t%0d",monitor_sequence_item.PADDR);
+			$display("PADDR:\t%0h",monitor_sequence_item.PADDR);
 			if(monitor_sequence_item.PWRITE)
-				$display("PWDATA:\t%0d",monitor_sequence_item.PWDATA);
+				$display("PWDATA:\t%0h",monitor_sequence_item.PWDATA);
 			$display("PSTRB:\t%b",monitor_sequence_item.PSTRB);
 			active_item_port.write(monitor_sequence_item);
 			wait(vif.PREADY);

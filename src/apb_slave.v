@@ -5,7 +5,7 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 32)(
     input         PENABLE,   // Enable Signal
     input         PWRITE,    // Write (1) / Read (0)
     input  [ADDR_WIDTH-1:0]  PADDR,     // Address of Slave
-    input  [(ADDR_WIDTH/8)-1:0] PSTRB,
+    input  [(DATA_WIDTH/8)-1:0] PSTRB,
     input  [DATA_WIDTH-1:0]  PWDATA,    // Write Data
     output reg [DATA_WIDTH-1:0] PRDATA, // Read Data
     output reg       PREADY,
@@ -14,8 +14,8 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 32)(
 
   parameter N = 4;  // Number of wait states
 
-	reg [8:0] index;
-	reg [DATA_WIDTH-1:0] mask;
+	integer index;
+	reg [`DATA_WIDTH-1:0] mask;
 	integer i, j;
 
   reg [DATA_WIDTH-1:0] mem [0:(2**ADDR_WIDTH)-1]; // 8x8-bit memory
@@ -26,7 +26,6 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 32)(
 	begin
     if (!PRESETn) 
 		begin
-			$display("\n\n Design Entered reset");
       PREADY  <= 0;
       PSLVERR <= 0;
       PRDATA  <= 0;
@@ -57,10 +56,8 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 32)(
 
           if (PWRITE) 
 					begin
-						if (PADDR[ADDR_WIDTH-1:ADDR_WIDTH-2] == 2'b11) // For 16 bit ADDR 50000 - 65536 is invalid 
-						begin
+						if (PADDR[ADDR_WIDTH-1:ADDR_WIDTH-2] == 2'b11) // For 8  bit ADDR 64 - 255 is invalid 
               PSLVERR <= 1;  // Invalid address, assert error
-            end
             else 
 						begin
 							index = 0;
@@ -76,17 +73,21 @@ module apb_slave #(parameter ADDR_WIDTH=8, DATA_WIDTH = 32)(
 								end
 							end
               mem[PADDR] <= (mem[PADDR] & (~mask)) | (PWDATA & mask);  // Write operation
-							//mem[PADDR] <= PWDATA;
             end
           end
-          else begin
-            PRDATA <= mem[PADDR]; // Read operation
+          else
+					begin
+						if (PADDR[ADDR_WIDTH-1:ADDR_WIDTH-2] == 2'b11) // For 16 bit ADDR 50000 - 65536 is invalid 
+              PSLVERR <= 1;  // Invalid address, assert error
+						else
+						begin
+            	PRDATA <= mem[PADDR]; // Read operation
+						end
           end
         end
       end
-      else begin
+      else
         PREADY <= 0;
-      end
     end
   end
 endmodule

@@ -25,9 +25,9 @@ class apb_slv_write_read_sequence extends uvm_sequence #(apb_slv_seq_item);
 
 	virtual task body();
 		bit [`ADDR_WIDTH-1:0] write_address;
-		`uvm_do_with(req,{req.PSELx == 1; req.PWRITE == 1; req.PSTRB == 1;});
+		`uvm_do_with(req,{req.PSELx == 1; req.PWRITE == 1; req.PADDR inside{[0:49000]};});
 		write_address = req.PADDR;
-		`uvm_do_with(req,{req.PSELx == 1; req.PWRITE == 0; req.PADDR == write_address; req.PSTRB == 1;});
+		`uvm_do_with(req,{req.PSELx == 1; req.PWRITE == 0; req.PADDR == write_address;});
 	endtask : body
 
 endclass : apb_slv_write_read_sequence

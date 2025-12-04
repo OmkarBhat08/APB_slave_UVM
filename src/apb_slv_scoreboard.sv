@@ -9,7 +9,7 @@ class apb_slv_scoreboard extends uvm_component;
 	apb_slv_seq_item input_packet, output_packet;
 
 	bit [(`DATA_WIDTH)-1:0] mem [0:(2**`ADDR_WIDTH)-1];
-	bit PSLVERR;
+	bit PSLVERR, PSTRB;
 	int index;
 	bit [`DATA_WIDTH-1:0] mask;
 	
@@ -39,6 +39,7 @@ class apb_slv_scoreboard extends uvm_component;
 					if(input_packet.PSELx == 1 && input_packet.PENABLE == 1 && input_packet.PWRITE == 1)
 					begin
 						$display("-------------------------Scoreboard @ %0t-------------------------", $time);
+						PSTRB = input_packet.PSTRB;
 						index = 0;
 						for(int i=0; i<(`DATA_WIDTH/8); i++) //For each strobe bit
 						begin
@@ -59,7 +60,7 @@ class apb_slv_scoreboard extends uvm_component;
 						else
 						begin
             	mem[input_packet.PADDR] = (mem[input_packet.PADDR] & (~mask)) | (input_packet.PWDATA & mask);  // Write operation
-							$display("Scoreboard writing %0d  data into memory at address %0d", mem[input_packet.PADDR], input_packet.PADDR);
+							$display("Scoreboard writing %0h  data into memory at address %0h", mem[input_packet.PADDR], input_packet.PADDR);
 						end
 					end
 				end
@@ -71,7 +72,7 @@ class apb_slv_scoreboard extends uvm_component;
 					begin
 						$display("-------------------------Scoreboard @ %0t-------------------------", $time);
 						$display("Field\t\t Expected\tActual");
-						$display("PRDATA\t     %0d\t\t %0d", mem[input_packet.PADDR], output_packet.PRDATA);
+						$display("PRDATA\t %0h\t\t%0h", mem[input_packet.PADDR], output_packet.PRDATA);
 						$display("PSLVERR\t     %0d\t\t %0d", PSLVERR, output_packet.PSLVERR);
 						$display("PREADY\t     1\t\t %0d", output_packet.PREADY);
 

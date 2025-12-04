@@ -15,18 +15,16 @@ class apb_slv_subscriber extends uvm_component;
 		PSELX: coverpoint input_trans.PSELx;
 		PENABLE: coverpoint input_trans.PENABLE;
 		PWRITE: coverpoint input_trans.PWRITE;
-		PADDR: coverpoint input_trans.PADDR{bins PADDR0 = {[0:50]};
-					                              bins PADDR1 = {[0:3]};
-					                              bins PADDR2 = {[4:15]};
-					                    	        bins PADDR3 = {[16:63]};
-					                              bins PADDR4 = {[64:255]};
+		PADDR: coverpoint input_trans.PADDR{bins PADDR_range0 = {[0:3]};
+					                              bins PADDR_range1 = {[4:15]};
+					                    	        bins PADDR_range2 = {[16:63]};
+					                              bins PADDR_invalid_range = {[64:255]};
 					                             }
-			PWDATA: coverpoint input_trans.PWDATA{bins PWDATA0 = {[0:50]};
-						                              bins PWDATA1 = {[51:100]};
-						                              bins PWDATA2 = {[101:150]};
-						                              bins PWDATA3 = {[151:200]};
-						                              bins PWDATA4 = {[201:255]};
-	                                       }
+			PWDATA: coverpoint input_trans.PWDATA{wildcard bins PWDATA_range0 = {16'h000?};
+						                              	wildcard bins PWDATA_range1 = {16'h00?0};
+						                              	wildcard bins PWDATA_range2 = {16'h0?00};
+						                              	wildcard bins PWDATA_range3 = {16'h?000};
+	                                      	 }
 		PSTRB: coverpoint input_trans.PSTRB;
 		PADDRxPWDATA: cross PADDR, PWDATA;
 	endgroup : input_cov
@@ -34,15 +32,11 @@ class apb_slv_subscriber extends uvm_component;
 	covergroup output_cov();
 		PREADY: coverpoint output_trans.PREADY;
 		PSLVERR: coverpoint output_trans.PSLVERR;
-		PRDATA: coverpoint output_trans.PRDATA;
-		/*
-																					{bins PRDATA0 = {[0:50]};
-						                               bins PRDATA1 = {[51:100]};
-						                               bins PRDATA2 = {[101:150]};
-						                               bins PRDATA3 = {[151:200]};
-						                               bins PRDATA4 = {[201:255]};
-	                                        }
-		*/
+		PRDATA: coverpoint output_trans.PRDATA{wildcard bins PRDATA_range0 = {16'h000?};
+			                                     wildcard bins PRDATA_range1 = {16'h00?0};
+			                                     wildcard bins PRDATA_range2 = {16'h0?00};
+			                                     wildcard bins PRDATA_range3 = {16'h?000};
+			                                    }
 	endgroup : output_cov
 
 	function new (string name = "apb_slv_subscriber", uvm_component parent = null);

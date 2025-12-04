@@ -66,9 +66,9 @@ class apb_slv_driver extends uvm_driver #(apb_slv_seq_item);
 		$display("PSELx = %0d", req.PSELx);
 		$display("PENABLE = %0d", req.PENABLE);
 		$display("PWRITE= %0d", req.PWRITE);
-		$display("PADDR = %0d", req.PADDR);
+		$display("PADDR = %0h", req.PADDR);
 		if(req.PWRITE)
-			$display("PWDATA = %0d", req.PWDATA);
+			$display("PWDATA = %0h", req.PWDATA);
 		$display("PSTRB = %0d", req.PSTRB);
 	endtask : setup_state_drive
 
@@ -80,8 +80,8 @@ class apb_slv_driver extends uvm_driver #(apb_slv_seq_item);
 		$display("PSELx = %0d", req.PSELx);
 		$display("PENABLE = 1");
 		$display("PWRITE= %0d", req.PWRITE);
-		$display("PADDR = %0d", req.PADDR);
-		$display("PWDATA = %0d", req.PWDATA);
+		$display("PADDR = %0h", req.PADDR);
+		$display("PWDATA = %0h", req.PWDATA);
 		$display("PSTRB = %0d", req.PSTRB);
 	endtask : access_state_drive
 endclass : apb_slv_driver

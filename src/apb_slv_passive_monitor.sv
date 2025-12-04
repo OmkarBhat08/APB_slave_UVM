@@ -26,7 +26,7 @@ class apb_slv_passive_monitor extends uvm_monitor;
 			monitor_sequence_item.PREADY = vif.PREADY;
 			monitor_sequence_item.PSLVERR = vif.PSLVERR;
 			$display("-------------------------------- Passive monitor @%0t--------------------------------", $time);
-			$display("PRDATA:\t%0d",monitor_sequence_item.PRDATA);
+			$display("PRDATA:\t%0h",monitor_sequence_item.PRDATA);
 			$display("PREADY:\t%b",monitor_sequence_item.PREADY);
 			$display("PSLVERR:\t%b",monitor_sequence_item.PSLVERR);
 
