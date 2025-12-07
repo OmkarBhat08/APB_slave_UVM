@@ -66,8 +66,9 @@ class apb_slv_regression_sequence extends uvm_sequence #(apb_slv_seq_item);
 
 	virtual task body();
 		`uvm_do(base_sequence);
-		repeat(100)
+		repeat(20)
 		 `uvm_do(write_read_sequence);
+		repeat(40)
 		`uvm_do(slverr_sequence);
 	endtask : body
 

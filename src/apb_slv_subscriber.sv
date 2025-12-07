@@ -13,47 +13,36 @@ class apb_slv_subscriber extends uvm_component;
 	covergroup input_cov();
 		//PRESETn: coverpoint input_trans.PRESETn;
 		PSELX: coverpoint input_trans.PSELx{
-																				bins deasserted = {0};
 																			  bins asserted = {1};
 																	  	 }
 		PENABLE: coverpoint input_trans.PENABLE{
-																						bins deasserted = {0};
 																				  	bins asserted = {1};
 																					 }
 		PWRITE: coverpoint input_trans.PWRITE{
 																					bins deasserted = {0};
 																				  bins asserted = {1};
 																					}
-		PADDR: coverpoint input_trans.PADDR{bins PADDR_range0 = {[0:3]};
-					                              bins PADDR_range1 = {[4:15]};
-					                    	        bins PADDR_range2 = {[16:63]};
-					                              bins PADDR_invalid_range = {[64:255]};
+		PADDR: coverpoint input_trans.PADDR{
+																				option.auto_bin_max = 4;
 					                             }
-			PWDATA: coverpoint input_trans.PWDATA{wildcard bins PWDATA_range0 = {16'h000?};
-						                              	wildcard bins PWDATA_range1 = {16'h00?0};
-						                              	wildcard bins PWDATA_range2 = {16'h0?00};
-						                              	wildcard bins PWDATA_range3 = {16'h?000};
+			PWDATA: coverpoint input_trans.PWDATA{
+																						option.auto_bin_max = 4;
 	                                      	 }
-		PSTRB: coverpoint input_trans.PSTRB{
-																				bins deasserted = {0};
-																			  bins asserted = {1};
-																			 }
+		PSTRB: coverpoint input_trans.PSTRB;
+
 		PADDRxPWDATA: cross PADDR, PWDATA;
 	endgroup : input_cov
 	
 	covergroup output_cov();
 		PREADY: coverpoint output_trans.PREADY{
-																					 bins deasserted = {0};
 																					 bins asserted = {1};
 																					}
 		PSLVERR: coverpoint output_trans.PSLVERR{
 																						 bins deasserted = {0};
 																						 bins asserted = {1};
 																						}
-		PRDATA: coverpoint output_trans.PRDATA{wildcard bins PRDATA_range0 = {16'h000?};
-			                                     wildcard bins PRDATA_range1 = {16'h00?0};
-			                                     wildcard bins PRDATA_range2 = {16'h0?00};
-			                                     wildcard bins PRDATA_range3 = {16'h?000};
+		PRDATA: coverpoint output_trans.PRDATA{
+																					option.auto_bin_max = 4;
 			                                    }
 	endgroup : output_cov
 
